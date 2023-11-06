@@ -1,7 +1,5 @@
 /* estilos-catalogo.css */
 
-/* Establece un fondo negro para la barra de navegación */
-
 
 /* Puedes ajustar otros estilos según tus necesidades */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -13,7 +11,120 @@
 body {
     font-family: 'Poppins', sans-serif;
 }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+.nav__logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+}
 
+
+.nav__title {
+    margin: 0; /* Elimina el margen superior predeterminado */
+}
+
+#reloj {
+    display: flex;
+    justify-content: justify;
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+    width: 100%;
+    
+}
+
+header {
+
+    text-align: center;
+    padding: 20px 0;
+    
+}
+
+h1 {
+    margin: 100px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+/* Estilos para el contenedor de productos */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Mostrar 3 productos por fila en escritorio */
+    gap: 10px; /* Espacio entre productos */
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Agrega un poco de espacio alrededor del contenedor */
+}
+
+/* Cambia a 2 productos por fila en pantallas más pequeñas */
+@media (max-width: 800px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr); /* Mostrar 2 productos por fila en pantallas más pequeñas */
+        max-width: 100%; /* Ocupa todo el ancho del contenedor */
+        font-size: 20px; /* Ajusta el tamaño de fuente en dispositivos medianos */
+    }
+}
+
+
+/* Cambia a 1 producto por fila en dispositivos móviles */
+@media (max-width: 480px) {
+    .products-container {
+        grid-template-columns: repeat(1, 1fr); /* Mostrar 1 producto por fila en dispositivos móviles */
+        font-size: 16px; /* Reduce el tamaño de fuente en dispositivos móviles para una mejor legibilidad */
+    }
+}
+del {
+    color: red; /* Cambia el color del texto tachado a rojo */
+    text-decoration: line-through; /* Agrega una línea de tachado */
+}
+
+.product {
+    background-color: #000000;
+    border: 2px solid #646262; /* Aumenta el grosor del borde */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Reduce el relleno para dar más espacio a la descripción */
+    max-width: 100%;
+    text-align: center;
+    border-radius: 10px; /* Reduce el radio del borde para que se vea más sutil */
+    margin-bottom: 20px; /* Aumenta el espaciado entre las filas */
+    box-sizing: border-box; /* Asegura que el ancho incluya el borde y el relleno */
+}
+
+.product img {
+    max-width: 50%;
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    display: block; /* Evita el espacio no deseado debajo de las imágenes */
+    margin: 0 auto; /* Centra horizontalmente las imágenes */
+}
+/* Estilos para el botón de comprar */
+.white-button {
+    display: inline-block;
+    width: auto; /* El botón se extenderá al 100% del ancho del contenedor */
+    text-align: center; /* Centra el texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón, puedes ajustarlo según tus necesidades */
+    background-color: #ffffff; /* Color de fondo del botón */
+    justify-self: center;
+    color: #000000; /* Color del texto del botón */
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 35px;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+} 
+  /* Estilo para el botón "comprar" al pasar el mouse sobre él */
+  .white-button:hover {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
   /* Estilos del modal */
 .modal {
     display: none;
@@ -30,7 +141,7 @@ body {
   
   .modal-content {
     background-color: #000000;
-    padding: 20px;
+    padding: 100px;
     border-radius: 5px;
     text-align: center;
     position: relative;
@@ -82,7 +193,7 @@ body {
 }
 
 .about__icon {
-    transition: transform 0.3s; /* Agregamos una transición suave */
+    transition: transform 0.4s; /* Agregamos una transición suave */
 }
 
 .about__icon:hover {
@@ -118,7 +229,7 @@ body {
     height: 100%;
     background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
     background-size: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 12%, 0 12%);
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
     z-index: -1;
 }
 
@@ -275,74 +386,28 @@ body {
     display: block;
 }
 
-/* Testimony */
-
-.testimony{
-    background-color: #e5e5f7;
-}
-
-.testimony__container{
-    display: grid;
-    grid-template-columns: 50px 1fr 50px;
-    gap: 1em;
-    align-items: center;
-}
-
-.testimony__body{
-    display: grid;
-    grid-template-columns: 1fr max-content;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2em;
-    grid-column: 2/3;
-    grid-row: 1/2;
-    opacity: 0;
-    pointer-events: none;
-}
-
-
-.testimony__body--show{
-    pointer-events: unset;
-    opacity: 1;
-    transition: opacity 1.5s ease-in-out;
-}
-
-.testimony__img{
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: 50% 30%;
-}
-
-.testimony__texts{
-    max-width: 700px;
-}
-
-.testimony__course{
-    background-color: rgb(0, 0, 0);
-    color: #fff;
-    display: inline-block;
-    padding: 5px;
-}
-
-.testimony__arrow{
-    width: 90%;
-    cursor: pointer;
-}
-
-
 /* Footer */
 
 .footer{
     background-color: #000000;
+    display: 0%;
+    height: 100%;
 }
 
 .footer__title{
+    display: flex;
+    justify-content: space-between;
     font-weight: 300;
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
+.footer__newsletter{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    
+}
+
 
 .footer__title, .footer__newsletter{
     color: #fff;
@@ -394,7 +459,7 @@ body {
     margin-left: auto;
     display: inline-block;
     height: 50px;
-    padding: 0 20px ;
+    padding: 0 20px;
     background-color: #fffdfd;
     border: none;
     font-size: 1rem;
@@ -485,28 +550,6 @@ body {
         justify-self: center;
     }
 
-    .testimony__container{
-        grid-template-columns: 30px 1fr 30px;
-    }
-
-    .testimony__body{
-        grid-template-columns: 1fr;
-        grid-template-rows: max-content max-content;
-        gap: 3em;
-        justify-items:center ;
-    }
-
-
-    .testimony__img{
-        width: 200px;
-        height: 200px;
-        
-    }
-
-    .questions__copy{
-        width: 100%;
-    }
-
     .footer__container{
         flex-wrap: wrap;
     }
@@ -546,43 +589,9 @@ body {
         font-size: 1.8rem;
     }
 
-    .price__element{
-        width: 90%;
-    }
-
-    .price__element--best{
-        width: 90%;
-        /* padding: 40px; */
-    }
-
-    .price__price{
-        font-size: 2rem;
-    }
-
-    .testimony{
-        --padding-container: 60px 0;
-    }
-
-    .testimony__container{
-        grid-template-columns: 28px 1fr 28px;
-        gap: .9em;
-    }
-
-    .testimony__arrow{
-        width: 100%;
-    }
-
-    .testimony__course{
-        margin-top: 15px;
-    }
-
-    .questions__title{
-        font-size: 1rem;
-    }
-
     .footer__title{
         justify-self: start;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 
     .nav--footer{
