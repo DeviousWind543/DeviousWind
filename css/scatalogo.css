@@ -17,6 +17,73 @@ body {
     margin: 0;
     padding: 0;
 }
+.catalogo{
+    color: #000000;
+    display: flex;
+    text-align: auto;
+    padding: 35px;
+    order: auto; /* Cambiamos el orden a 2 en la vista móvil */
+    margin: 0; /* Para eliminar el margen superior que agrega el navegador por defecto */
+}
+.catalogo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: 10px auto;
+    max-width: 300px;
+    padding: 10px;
+    margin-right: 50px;
+}
+
+#search-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#search-button {
+    background-color: #000000; /* Color del botón de búsqueda */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: background-color 0.3s;
+}
+
+#search-button:hover {
+    background-color: #5b5b5b; /* Color de resaltado al pasar el cursor */
+}
+/* Estilos para la vista móvil */
+@media (max-width: 750px) {
+    .catalogo-container {
+        flex-direction: column; /* Cambiamos a dirección de columna en la vista móvil */
+    }
+
+    .catalogo {
+        order: 1; /* Cambiamos el orden a 1 en la vista móvil */
+        text-align: center; /* Centramos el texto en la vista móvil si es necesario */
+    }
+
+    .search-bar {
+        margin-right: auto;
+        order: 2; /* Cambiamos el orden a 2 en la vista móvil */
+        text-align: center; /* Centramos la barra de búsqueda en la vista móvil si es necesario */
+    }
+}
 .nav__logo {
     display: flex;
     align-items: center; /* Alinea verticalmente los elementos */
@@ -63,7 +130,7 @@ main {
 }
 
 /* Cambia a 2 productos por fila en pantallas más pequeñas */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .products-container {
         grid-template-columns: repeat(2, 1fr); /* Mostrar 2 productos por fila en pantallas más pequeñas */
         max-width: 100%; /* Ocupa todo el ancho del contenedor */
@@ -73,7 +140,7 @@ main {
 
 
 /* Cambia a 1 producto por fila en dispositivos móviles */
-@media (max-width: 480px) {
+@media (max-width: 750px) {
     .products-container {
         grid-template-columns: repeat(1, 1fr); /* Mostrar 1 producto por fila en dispositivos móviles */
         font-size: 16px; /* Reduce el tamaño de fuente en dispositivos móviles para una mejor legibilidad */

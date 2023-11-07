@@ -41,6 +41,15 @@
         <!-- Puedes agregar información sobre tus productos y servicios aquí -->
                 <!-- Repite este bloque para más productos -->          
                 <!-- Contenido de tu página de catálogo -->
+                <section class="catalogo-container">
+                    <h2 class="catalogo"><strong>Catalogo</strong></h2>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Buscar productos...">
+                        <button id="search-button">Buscar</button>
+                    </div>
+                </section>                
+                               
+                
                 <!-- Sección 1 -->
                 <main>
                     <section class="products-container">
@@ -141,7 +150,7 @@
     <footer class="footer">
         <section class="footer__container container">
             <nav class="nav nav--footer">
-                <h2 class="footer__title">DeviousWind</h2>
+                <h2 class="footer__title"><strong>DeviousWind</strong></h2>
                 <ul class="nav__link nav__link--footer">
                     <li class="nav__items">
                         <a href="./index.html" class="nav__links">Inicio</a>
@@ -180,11 +189,22 @@
                     <img src="./images/whatsapp.svg" class="footer__img" alt="Whatsapp">
                 </a>
             </div>
-            <h3 class="footer__copyright">Derechos reservados &copy; Mike Carrion</h3>
+            <h3 class="footer__copyright">Derechos reservados 2023 &copy; Mike Carrion</h3>
         </section>
     </footer>
     <script src="./js/menu.js"></script>
     <script src="./js/Pantalla.js"></script>
     <script src="./js/reloj.js"></script>
+    <script src="./js/buscar.js"></script>
+    <script>
+        const searchInput = document.getElementById("search-input");
+        const searchButton = document.getElementById("search-button");
+    
+        searchInput.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                searchButton.click();
+            }
+        });
+    </script>    
 </body>
 </html>
