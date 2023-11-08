@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteos</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/scatalogo.css">
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <div class="logo-title">
+                    <h2 class="nav__title">DeviousWind <S class="A"></S>S.A</h2>
+                    <div id="reloj">00:00:00</div>
+                </div>
+            </div>
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="index.html" class="nav__links">Inicio</a>
+                </li>
+                <li class="nav__items">
+                    <a href="catalogo.html" class="nav__links">Catálogo</a>
+                </li>
+                <li class="nav__items">
+                    <a href="https:///wa.me/message/76HFLHEBBM4VB1?text=¡Hola! Quiero contactarte." class="nav__links">Contacto</a>
+                </li>
+                <li class="nav__items">
+                    <a href="sorteo.html" class="nav__links">Sorteo</a>
+                </li>
+                <img src="./images/close.svg" class="nav__close">
+            </ul>
+            <div class="nav__menu">
+                <img src="./images/menu.svg" class="nav__img">
+            </div>
+        </nav>
+        <section class="catalogo-container">
+            <h2 class="catalogo"><strong>Catálogo</strong></h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar persona...">
+                <button id="search-button">Buscar</button>
+            </div>
+        </section>
+        <main>
+            <section class="product">
+                <form method="post" action="">
+                    <h2>Participa en el sorteo</h2>
+                    <label for="primer_nombre">Primer Nombre:</label>
+                    <input type="text" id="primer_nombre" name="primer_nombre" required>
+                
+                    <label for="segundo_nombre">Segundo Nombre:</label>
+                    <input type="text" id="segundo_nombre" name="segundo_nombre" required>
+    
+                    <label for="primer_apellido">Primer Apellido:</label>
+                    <input type="text" id="primer_apellido" name="primer_apellido" required>
+    
+                    <label for="segundo_apellido">Segundo Apellido:</label>
+                    <input type="text" id="segundo_apellido" name="segundo_apellido" required>
+    
+                    <label for="numero_ticket">Número de Ticket:</label>
+                    <input type="number" id="numero_ticket" name="numero_ticket" required>
+    
+                    <button type="submit">Registrar</button>
+                </form>
+            </section>
+    
+            <section class="product">
+                <h2>Listado de Participantes</h2>
+                <ul id="listado-participantes">  </ul>
+            </section>
+        </main>
+    </header>
+    <!-- Resto del contenido de tu página de catálogo -->
+    <!-- Añade imágenes, descripciones y otros detalles de tus productos y servicios -->
+    
+    <!-- Sección parte baja ... -->
+    
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav nav--footer">
+                <h2 class="footer__title"><strong>DeviousWind</strong></h2>
+                <ul class="nav__link nav__link--footer">
+                    <li class="nav__items">
+                        <a href="index.html" class="nav__links">Inicio</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="catalogo.html" class="nav__links">Catálogo</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="https:///wa.me/message/76HFLHEBBM4VB1?text=¡Hola! Quiero contactarte." class="nav__links">Contacto</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="sorteo.html" class="nav__links">Sorteo</a>
+                    </li>
+                </ul>
+            </nav>
+            <form class="footer__form" action="https://formspree.io/f/xzblwgez" method="POST">
+                <h2 class="footer__newsletter">Regístrate</h2>
+                <div class="footer__inputs">
+                    <input type="email" placeholder="Email:" class="footer__input" name="_replyto">
+                    <input type="submit" value="Regístrate" class="footer__submit">
+                </div>
+            </form>
+        </section>
+        <section class="footer__copy container">
+            <div class="footer__social">
+                <a href="https://www.paypal.com/invoice/p/#XZBD2H3GQVM987DV" target="_blank">
+                    <img src="./images/Paypal.svg" class="footer__img" alt="Paypal">
+                </a>
+                <a href="https://facebook.com/DeviousWind543" target="_blank">
+                    <img src="./images/facebook.svg" class="footer__img" alt="Facebook">
+                </a>
+                <a href="https://youtube.com/@deviouswind543?si=DrwMY8wvaaXjjwHW" target="_blank">
+                    <img src="./images/youtube.svg" class="footer__img" alt="YouTube">
+                </a>
+                <a href="https://wa.me/message/76HFLHEBBM4VB1" target="_blank">
+                    <img src="./images/whatsapp.svg" class="footer__img" alt="Whatsapp">
+                </a>
+            </div>
+            <h3 class="footer__copyright">Derechos reservados 2023 &copy; Mike Carrion</h3>
+        </section>
+    </footer>
+    <script src="./js/menu.js"></script>
+    <script src="./js/Pantalla.js"></script>
+    <script src="./js/reloj.js"></script>
+    <script src="./js/buscar.js"></script>
+    <script src="./js/sorteo.js"></script>
+    <script src="./js/clave.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBx89YRtravITCUzYlhx6eh3Cz_JKy45v4",
+          authDomain: "deviouswind543.firebaseapp.com",
+          databaseURL: "https://deviouswind543-default-rtdb.firebaseio.com",
+          projectId: "deviouswind543",
+          storageBucket: "deviouswind543.appspot.com",
+          messagingSenderId: "612868944328",
+          appId: "1:612868944328:web:4cc22396da4b213a4d50fd",
+          measurementId: "G-X56MY7PB6Z"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    
+</body>
+</html>
