@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "DeviousWind": "DeviousWind",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/sorteo/**",
+        "destination": "/sorteo.html"
       }
     ]
   }

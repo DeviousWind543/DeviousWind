@@ -46,7 +46,7 @@
         </section>
         <main>
             <section class="product">
-                <form method="post" action="">
+                <form method="post" action=" ">
                     <h2>Participa en el sorteo</h2>
                     <label for="primer_nombre">Primer Nombre:</label>
                     <input type="text" id="primer_nombre" name="primer_nombre" required>
@@ -63,7 +63,7 @@
                     <label for="numero_ticket">Número de Ticket:</label>
                     <input type="number" id="numero_ticket" name="numero_ticket" required>
     
-                    <button type="submit">Registrar</button>
+                    <button id="submit">Registrar</button>
                 </form>
             </section>
     
@@ -123,12 +123,8 @@
             <h3 class="footer__copyright">Derechos reservados 2023 &copy; Mike Carrion</h3>
         </section>
     </footer>
-    <script src="./js/menu.js"></script>
-    <script src="./js/Pantalla.js"></script>
-    <script src="./js/reloj.js"></script>
-    <script src="./js/buscar.js"></script>
-    <script src="./js/sorteo.js"></script>
-    <script src="./js/clave.js"></script>
+<script> src= "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"</script>
+<script> src= "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"</script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
@@ -153,6 +149,12 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
       </script>
+
+<script src="./js/menu.js"></script>
+<script src="./js/Pantalla.js"></script>
+<script src="./js/reloj.js"></script>
+<script src="./js/buscar.js"></script>
+<script src="./js/sorteo.js"></script>
     
 </body>
 </html>

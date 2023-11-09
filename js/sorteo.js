@@ -1,17 +1,28 @@
-import { database } from "./clave.js"; // Importa la referencia a la base de datos
+// Importa las funciones necesarias de Firebase Realtime Database
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
-import { ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+// Tu configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBx89YRtravITCUzYlhx6eh3Cz_JKy45v4",
+          authDomain: "deviouswind543.firebaseapp.com",
+          databaseURL: "https://deviouswind543-default-rtdb.firebaseio.com",
+          projectId: "deviouswind543",
+          storageBucket: "deviouswind543.appspot.com",
+          messagingSenderId: "612868944328",
+          appId: "1:612868944328:web:4cc22396da4b213a4d50fd",
+          measurementId: "G-X56MY7PB6Z"
+};
 
+// Inicializa Firebase con la configuración
+const app = initializeApp(firebaseConfig);
+
+// Obtén una referencia a la base de datos
+const database = getDatabase(app);
+
+// Obtén una referencia a la colección de participantes
 const participantesRef = ref(database, "participantes");
 
-// Escucha cambios en la base de datos
-onValue(participantesRef, (snapshot) => {
-  const participantes = snapshot.val();
-  // Actualiza la interfaz de usuario con los datos de los participantes
-  // Puedes mostrar los nombres y números de boleto en tu página aquí
-});
-
-const formulario = document.querySelector("form");
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   // Obtener valores del formulario y guardar en Firebase
