@@ -1,6 +1,7 @@
-// Importa las funciones necesarias de Firebase Realtime Database
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+
+// ...
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -14,42 +15,41 @@ const firebaseConfig = {
           measurementId: "G-X56MY7PB6Z"
 };
 
-// Inicializa Firebase con la configuración
 const app = initializeApp(firebaseConfig);
 
-// Obtén una referencia a la base de datos
-const database = getDatabase(app);
+// Obtener una instancia de Firebase Authentication
+const auth = getAuth();
 
-// Obtén una referencia a la colección de participantes
-const participantesRef = ref(database, "participantes");
-
-formulario.addEventListener("submit", (e) => {
+// Manejar el inicio de sesión
+document.getElementById("login-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  // Obtener valores del formulario y guardar en Firebase
-  const primerNombre = document.querySelector("#primer_nombre").value;
-  const segundoNombre = document.querySelector("#segundo_nombre").value;
-  const primerApellido = document.querySelector("#primer_apellido").value;
-  const segundoApellido = document.querySelector("#segundo_apellido").value;
-  const numeroTicket = parseInt(document.querySelector("#numero_ticket").value);
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-  // Guardar los datos en Firebase
-  const nuevoParticipante = {
-    primerNombre,
-    segundoNombre,
-    primerApellido,
-    segundoApellido,
-    numeroTicket,
-  };
-
-  // Agregar el nuevo participante a la colección
-  push(participantesRef, nuevoParticipante)
-    .then(() => {
-      // Limpiar el formulario después de guardar
-      formulario.reset();
-      alert("Participante registrado con éxito.");
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Usuario autenticado con éxito
+      const user = userCredential.user;
+      console.log("Usuario autenticado: ", user);
     })
     .catch((error) => {
-      alert("Hubo un error al registrar el participante: " + error.message);
+      console.error("Error al autenticar: ", error);
     });
 });
 
+// Manejar el registro de usuarios
+document.getElementById("register-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Usuario registrado con éxito
+      const user = userCredential.user;
+      console.log("Usuario registrado: ", user);
+    })
+    .catch((error) => {
+      console.error("Error al registrar usuario: ", error);
+    });
+});
