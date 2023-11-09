@@ -9,6 +9,119 @@ body {
     align-items: center;
     height: 100vh;
   }
+  /* Estilos para la sección del copyright */
+  /* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 10px 0;
+  }
+  
+  .footer__title {
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .footer__title, .footer__newsletter {
+    color: #fff;
+  }
+  
+  .footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 6px;
+    text-align: center;
+  }
+  
+  .nav--footer {
+    padding-bottom: 20px;
+    display: grid;
+    gap: 1em;
+    grid-auto-flow: row;
+    height: 100%;
+  }
+  
+  .nav__link--footer {
+    display: flex;
+    margin: 0;
+    margin-right: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .footer__inputs {
+    margin-top: 10px;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .footer__input {
+    background-color: #fff;
+    height: 50px;
+    display: block;
+    padding-left: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    margin-right: 16px;
+  }
+  
+  .footer__submit {
+    margin-left: auto;
+    display: inline-block;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #fffdfd;
+    border: none;
+    font-size: 1rem;
+    color: #000000;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .footer__copy {
+    padding: var(--padding-container);
+    text-align: center;
+    color: #fff;
+  }
+  
+  .footer__icons {
+    margin-bottom: 10px;
+  }
+  
+  .footer__img {
+    width: 30px;
+  }
+  
+  .footer__copyright {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-top: 10px;
+  }
+  .footer__x {
+    text-align: right;
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    margin-top: auto;
+  }
+  /* Estilo para el icono de cierre (close) */
+  .close-icon {
+    position: flex;
+    font-size: 15px;
+    color: #000;
+    cursor: pointer;
+  }
+  
 
   .container {
     background: rgba(255, 255, 255, 0.8);
@@ -23,10 +136,13 @@ body {
     margin: 10px 0;
   }
 
-  label {
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
+  .label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000;
+    color: #fff;
+    padding: 10px 0;
   }
 
   input[type="email"],
@@ -56,6 +172,8 @@ body {
   p {
     text-align: center;
     margin-top: 10px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 30px;
   }
 
   a {
