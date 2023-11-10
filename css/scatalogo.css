@@ -31,8 +31,22 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.x {
+    display:grid;
+    justify-content: space-between;
+    align-items: auto;
+    color: #000;
+    max-width: 100%;
+    text-align: left;
 
-
+}
+.xp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+}
 /* Estilos para la barra de búsqueda */
 .search-bar {
     display: flex;
