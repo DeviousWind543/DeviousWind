@@ -684,7 +684,10 @@ del {
         width: 100%;
         justify-items: center;
     }
-
+    .nav-{
+        width: 50%;
+        justify-items: center;
+    }
     .nav__link--footer{
         width: 100%;
         justify-content: space-evenly;
