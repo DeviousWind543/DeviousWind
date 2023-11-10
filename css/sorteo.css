@@ -7,7 +7,7 @@ body {
 }
 .participant-list {
     width: 100%;
-    margin: 1000px auto;
+    margin: 0 auto;
     padding: 20px;
     background-color: #000000;
     border: 1px solid #000000;
