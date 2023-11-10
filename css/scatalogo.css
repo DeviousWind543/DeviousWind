@@ -73,6 +73,7 @@ body {
 /* Estilos para la imagen */
 img {
     max-width: 70%; /* Asegura que la imagen no se desborde */
+    height: auto;
 }
 
 .x {
