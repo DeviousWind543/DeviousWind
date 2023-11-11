@@ -17,6 +17,26 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Estilos para los botones de paginación */
+.pagination-container {
+    margin-top: 20px; /* Ajusta según sea necesario */
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-button {
+    padding: 10px 15px;
+    background-color: #000000; /* Cambia el color de fondo según tu diseño */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #5b5b5b; /* Color de resaltado al pasar el cursor */
+}
 .catalogo{
     color: #000000;
     display: flex;
@@ -534,6 +554,16 @@ del {
     
 }
 
+/* Agrega estas reglas CSS al final de tu archivo scatalogo.css o en un nuevo archivo de estilos */
+
+/* Efecto de zoom en las imágenes de los productos */
+.product img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.product:hover img {
+    transform: scale(1.5);
+}
 
 .footer__title, .footer__newsletter{
     color: #fff;
