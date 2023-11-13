@@ -562,7 +562,7 @@ del {
 }
 
 .product:hover img {
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .footer__title, .footer__newsletter{

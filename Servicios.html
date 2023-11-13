@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Productos </title>
+    <title>Catálogo de Servicios</title>
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/scatalogo.css"> <!-- Estilos específicos para el catálogo -->
     <meta name="theme-color" content="#000000">
+    <style>
+/* Agrega estas reglas CSS al final de tu archivo CSS actual */
+
+@media only screen and (max-width: 700px) {
+    /* Estilo específico para pantallas con un ancho máximo de 767px (pantallas móviles) */
+    .banner img {
+        width: 100%; /* Haz que las imágenes ocupen el 100% del ancho del contenedor */
+        height: auto; /* Mantén la proporción original de la imagen */
+        max-width: 600px;
+    }
+}
+
+        .banner {
+            width: 100%;
+            margin: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
+            flex-direction:auto;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -42,57 +67,45 @@
                 <!-- Repite este bloque para más productos -->          
                 <!-- Contenido de tu página de catálogo -->
                 <section class="catalogo-container">
-                    <h2 class="catalogo"><strong>Catalogo Army</strong></h2>
-                    <h2 class="catalogo">Juguetes</h2>
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="Buscar productos...">
-                        <button id="search-button">Buscar</button>
-                    </div>
+                    <h2 class="catalogo"><strong>Catalogo De Servicios</strong></h2>
                 </section>                
-                               
-                
-                <!-- Sección 1 -->
-                <main>
-                    <section class="products-container">
-                        <!-- Producto 1 -->
-                        <div class="product">
-                            <img src="./catalogo/F.png" alt="Producto 1">
-                            <h2>Procesando </h2>
-                            <p>Procesando .</p>
-                            <p>Procesando </p>
-                            <p>Procesando </p>
-                            <p>Precio original: <del>$Procesando </del></p>
-                            <p>Precio: $Procesando </p>
-                            <a href="comprar_producto_1.html" class="white-button">Comprar</a>
-                        </div>
-            
-                        <!-- Producto 2 -->
-                        <div class="product">
-                            <img src="./catalogo/F.png" alt="Producto 2">
-                            <h2>Procesando </h2>
-                            <p>Procesando .</p>
-                            <p>Procesando </p>
-                            <p>Procesando </p>
-                            <p>Precio original: <del>$Procesando </del></p>
-                            <p>Precio: $Procesando </p>
-                            <a href="comprar_producto_2.html" class="white-button">Comprar</a>
-                        </div>
-            
-                        <!-- Producto 3 -->
-                        <div class="product">
-                            <img src="./catalogo/F.png" alt="Producto 3">
-                            <h2>Procesando </h2>
-                            <p>Procesando .</p>
-                            <p>Procesando </p>
-                            <p>Procesando </p>
-                            <p>Precio original: <del>$Procesando </del></p>
-                            <p>Precio: $Procesando </p>
-                            <a href="comprar_producto_3.html" class="white-button">Comprar</a>
-                        </div>
+    <main>
+        <!-- Banner 1 -->
+        <div class="banner">
+            <img src="./catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 1">
+        </div>
 
-                         <!-- Producto 4 -->
-                         
-                        
+        <!-- Banner 2 -->
+        <div class="banner">
+            <img src="/catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 2">
+        </div>
+
+        <!-- Banner 3 -->
+        <div class="banner">
+            <img src="/catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 3">
+        </div>
+
+        <!-- Banner 3 -->
+        <div class="banner">
+            <img src="/catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 3">
+        </div>
+
+        <!-- Banner 3 -->
+        <div class="banner">
+            <img src="/catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 3">
+        </div>
+
+        <!-- Banner 3 -->
+        <div class="banner">
+            <img src="/catalogo/Servicios/banner-982162_1280.jpeg" alt="Banner 3">
+        </div>
+
+
+
+
+        <!-- Agrega más banners según sea necesario -->
+            
+            
                         <!-- Repite estos bloques para más productos -->
                     </section>
                     <section class="pagination-container">
@@ -103,7 +116,7 @@
                         <a href="Textiles.html" class="pagination-button">5</a>
                         <a href="Servicios.html" class="pagination-button">6</a>
                         <!-- Agrega más botones según sea necesario -->
-                    </section>
+                    </section>                    
                 </main>
 
     <!-- Resto del contenido de tu página de catálogo -->
@@ -161,24 +174,6 @@
     <script src="./js/Pantalla.js"></script>
     <script src="./js/reloj.js"></script>
     <script src="./js/buscar.js"></script>
-    <script src="./js/sorteo.js"></script>
-    <script>
-        const searchInput = document.getElementById("search-input");
-        const searchButton = document.getElementById("search-button");
-    
-        searchInput.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                searchButton.click();
-            }
-        });
-    </script>
-    <script>
-        function cambiarPagina(numero) {
-            // Implementa la lógica para cambiar de página aquí
-            // Puedes redirigir a diferentes páginas o cargar contenido dinámicamente
-            //alert("Cambiando a la página " + numero);
-            
-        }
-    </script>    
+    <script src="./js/sorteo.js"></script>   
 </body>
 </html>
