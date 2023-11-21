@@ -229,23 +229,27 @@ del {
     color: red; /* Cambia el color del texto tachado a rojo */
     text-decoration: line-through; /* Agrega una línea de tachado */
 }
-
+/*Cambiar tamaño del primer producto en maletas, puede replicarse para mas productos*/
+.first-product .product-images img {
+    max-width: 200px; /* Establece el ancho máximo que desees */
+    height: auto; /* Para mantener la proporción de aspecto */
+}
 .product {
     background-color: #000000;
     border: 2px solid #646262; /* Aumenta el grosor del borde */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px; /* Reduce el relleno para dar más espacio a la descripción */
     max-width: 100%;
-    text-align: justify;
+    text-align: center;
     border-radius: 10px; /* Reduce el radio del borde para que se vea más sutil */
     margin-bottom: 20px; /* Aumenta el espaciado entre las filas */
     box-sizing: border-box; /* Asegura que el ancho incluya el borde y el relleno */
 }
 
 .product img {
-    max-width: 100%;
+    max-width: 75%;
     height: auto; /* Mantiene la relación de aspecto de la imagen */
-    display: 10px 0; /* Evita el espacio no deseado debajo de las imágenes */
+    display: block; /* Evita el espacio no deseado debajo de las imágenes */
     margin: 0 auto; /* Centra horizontalmente las imágenes */
 }
 /* Estilos para el botón de comprar */
@@ -553,6 +557,12 @@ del {
     height: 100%;
     
 }
+.product-images img:not(:first-child) {
+    display: none;
+}
+
+/* Agrega estas reglas CSS al final de tu archivo scatalogo.css o en un nuevo archivo de estilos */
+
 .product {
     display: flex;
     flex-direction: column;
@@ -578,14 +588,6 @@ del {
 .next-image {
     margin-left: auto; /* Mueve el botón de la derecha a la derecha */
 }
-
-/* Agrega estas reglas CSS al final de tu archivo scatalogo.css o en un nuevo archivo de estilos */
-
-/* Efecto de zoom en las imágenes de los productos */
-.product img {
-    transition: transform 0.3s ease-in-out;
-}
-
 
 
 .footer__title, .footer__newsletter{
