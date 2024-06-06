@@ -417,28 +417,30 @@
       }
 
       function sendEmail(clientName, clientEmail, pdfData) {
-          const reader = new FileReader();
-          reader.onload = function() {
-              const base64String = reader.result.split(',')[1];
-              Email.send({
-                  Host: "smtp.elasticemail.com",
-                  Username: "DeviousWind@gmail.com",
-                  Password: "7D26FD36AAC5888410F952E6C1F0F1680FBF",
-                  SecureToken: "956A998B29A3146284735BEEC1DDD90B95E02D2DD02A119D1C64B6253D9C0F7CB43CEE76116A6137112D622765ED9901",
-                  To: clientEmail,
-                  From: "DeviousWind@gmail.com",
-                  Subject: "Proforma Generada",
-                  Body: `Estimado/a ${clientName},<br><br>Adjunto encontrará la proforma solicitada.<br><br>Saludos,<br>Equipo DeviousWind`,
-                  Attachments: [
-                      {
-                          name: "proforma.pdf",
-                          data: base64String
-                      }
-                  ]
-              })
-          };
-          reader.readAsDataURL(pdfData);
-      }
+    const reader = new FileReader();
+    reader.onload = function() {
+        const base64String = reader.result.split(',')[1];
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "DeviousWind@gmail.com",
+            Password: "DeviousWind543wpdm liys vdvf bput",
+            To: clientEmail,
+            From: "DeviousWind@gmail.com",
+            Subject: "Proforma Generada",
+            Body: `Estimado/a ${clientName},<br><br>Adjunto encontrará la proforma solicitada.<br><br>Saludos,<br>Equipo DeviousWind`,
+            Attachments: [
+                {
+                    name: "proforma.pdf",
+                    data: base64String
+                }
+            ]
+        }).then(
+            message => alert("Correo electrónico enviado correctamente")
+        );
+    };
+    reader.readAsDataURL(pdfData);
+}
+
 
       function saveClientData(clientRUC, clientName, clientAddress, clientEmail) {
           const clientData = {
