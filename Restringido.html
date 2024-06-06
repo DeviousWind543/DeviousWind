@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceder</title> 
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <meta name="theme-color" content="#000000">
+    <meta name="title" content="DeviousWind">
+    <meta name="description" content="Empresa Exitosa">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative; /* Agregado para que los elementos absolutos sean relativos a este contenedor */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        a.close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a.close-icon:hover {
+            color: #555;
+        }
+
+        #loginMessage {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Agrega el icono de cierre con un enlace a index.html -->
+        <a href="index.html" class="close-icon">X</a>
+        <h2>Acceso Restringido:</h2>
+        <form id="loginForm">
+            <input type="password" id="password" placeholder="Contraseña">
+            <br>
+            <button type="submit">Ingresar</button>
+            <p id="loginMessage"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Obtiene la contraseña ingresada por el usuario
+            const password = document.getElementById("password").value;
+        
+            // Verifica si la contraseña es correcta
+            if (password === "13092001") {
+                // Si la contraseña es correcta, redirecciona a la página protegida
+                window.location.href = "Proforma.html";
+            } else {
+                // Si la contraseña es incorrecta, muestra un mensaje de error
+                document.getElementById("loginMessage").textContent = "Contraseña incorrecta.";
+            }
+        });
+    </script>
+</body>
+</html>
+
+

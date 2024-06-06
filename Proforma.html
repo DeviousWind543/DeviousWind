@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Proformas</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #474747a5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: Flex;
+            flex-direction: column;
+        }
+        form > div {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .item input {
+            margin-bottom: 5px;
+        }
+        .removeItemButton {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .removeItemButton:hover {
+            background-color: #c82333;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+        .generateButton {
+            background-color: #32cd32;
+        }
+        .generateButton:hover {
+            background-color: #28a745;
+        }
+        /* Estilos para el menú lateral */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: -500px; /* Ocultar el menú al principio */
+            width: 300px;
+            height: 100%;
+            background-color: #000000;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        .nav__logo {
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .nav__link {
+            list-style: none;
+            padding: 20px;
+            border-bottom: 1px solid #ffffff;
+        }
+        .nav__link a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav__menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+    
+        .copyright {
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav container">
+        <div class="nav__logo">
+            <div class="logo-title">
+                <h2 class="nav__title">DeviousWind <S class="A"></S>S.A</h2>
+                <div id="reloj">00:00:00</div>
+            </div>
+        </div>            
+        <ul class="nav__link nav__link--menu">
+            <li class="nav__items">
+                <a href="index.html" class="nav__links">Inicio</a> 
+            </li>
+            <li class="nav__items">
+                <a href="catalogo.html" class="nav__links">catalogo</a>
+            </li>
+            <li class="nav__items">
+                <a href="https:///wa.me/message/76HFLHEBBM4VB1?text=¡Hola! Quiero contactarte." class="nav__links">Contacto</a>
+            </li>
+            <li class="nav__items">
+                <a href="Proforma.html" class="nav__links">Proforma</a>
+            </li>
+            <img src="" class="nav__close">
+        </ul>
+        <div class="nav__menu">
+            <img src="./images/menu.svg" class="nav__img">
+        </div>
+        <a class="copyright">Derechos reservados &copy; DeviousWind</a>
+    </nav>
+    <div class="container">
+        <h1><i class="icon fas fa-file-invoice-dollar"></i>Generador de Proformas</h1>
+        <form id="proformaForm">
+            <div>
+                <label for="clientRUC"><i class="icon fas fa-id-card"></i>RUC del Cliente:</label>
+                <input type="text" id="clientRUC" name="clientRUC" required>
+                <button type="button" id="loadClientButton"><i class="icon fas fa-search"></i>Buscar</button>
+            </div>
+            <div>
+                <label for="clientName"><i class="icon fas fa-user"></i>Nombre del Cliente:</label>
+                <input type="text" id="clientName" name="clientName" required>
+            </div>
+            <div>
+                <label for="clientAddress"><i class="icon fas fa-map-marker-alt"></i>Dirección del Cliente:</label>
+                <input type="text" id="clientAddress" name="clientAddress" required>
+            </div>
+            <div>
+                <label for="clientEmail"><i class="icon fas fa-envelope"></i>Correo Electrónico del Cliente:</label>
+                <input type="email" id="clientEmail" name="clientEmail" required>
+            </div>
+            <div id="itemsContainer">
+                <h3>Items</h3>
+                <div class="item">
+                    <label for="description0">Descripción:</label>
+                    <input type="text" id="description0" name="description[]" required>
+                    <label for="quantity0">Cantidad:</label>
+                    <input type="number" id="quantity0" name="quantity[]" required>
+                    <label for="unitPrice0">Precio Unitario:</label>
+                    <input type="number" step="0.01" id="unitPrice0" name="unitPrice[]" required>
+                    <button type="button" class="removeItemButton"><i class="icon fas fa-trash-alt"></i>Eliminar</button>
+                </div>
+            </div>
+            <button type="button" id="addItemButton"><i class="icon fas fa-plus"></i>Añadir Item</button>
+            <button type="submit" class="generateButton"><i class="icon fas fa-file-pdf"></i>Generar Proforma</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./js/reloj.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.querySelector('.nav__menu img');
+            const nav = document.querySelector('.nav');
+
+            menuButton.addEventListener('click', () => {
+                if (nav.style.left === '0px') {
+                    nav.style.left = '-500px';
+                } else {
+                    nav.style.left = '0';
+                }
+            });
+        });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const form = document.getElementById('proformaForm');
+          const itemsContainer = document.getElementById('itemsContainer');
+          const addItemButton = document.getElementById('addItemButton');
+          const loadClientButton = document.getElementById('loadClientButton');
+
+          let itemIndex = 1;
+          
+          loadClientButton.addEventListener('click', () => loadClientData());
+          form.addEventListener('submit', async (event) => {
+              event.preventDefault();
+              handleFormSubmit();
+          });
+
+
+          document.querySelectorAll('.removeItemButton').forEach(button => {
+              attachRemoveButtonEvent(button);
+          });
+      });
+         // Inicializar itemIndex
+         let itemIndex = 1;
+
+        // Agregar evento al botón "Añadir Item"
+         const addItemButton = document.getElementById('addItemButton');
+         addItemButton.addEventListener('click', () => {
+         addItem();
+          });
+
+          // Función para añadir un nuevo item al formulario
+          function addItem() {
+            const itemsContainer = document.getElementById('itemsContainer');
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+            itemDiv.innerHTML = `
+                <label for="description${itemIndex}">Descripción:</label>
+                <input type="text" id="description${itemIndex}" name="description[]" required>
+                <label for="quantity${itemIndex}">Cantidad:</label>
+                <input type="number" id="quantity${itemIndex}" name="quantity[]" required>
+                <label for="unitPrice${itemIndex}">Precio Unitario:</label>
+                <input type="number" step="0.01" id="unitPrice${itemIndex}" name="unitPrice[]" required>
+                <button type="button" class="removeItemButton"><i class="icon fas fa-trash-alt"></i>Eliminar</button>
+            `;
+            itemsContainer.appendChild(itemDiv);
+            attachRemoveButtonEvent(itemDiv.querySelector('.removeItemButton'));
+            itemIndex++;
+        }
+
+      function attachRemoveButtonEvent(button) {
+          button.addEventListener('click', () => {
+              button.parentElement.remove();
+          });
+      }
+
+      function loadClientData() {
+          const clientRUC = document.getElementById('clientRUC').value;
+
+          // Datos del cliente agregados manualmente
+          const manualClientData = {
+              "1790983919001": {
+                  clientName: "IGLESIA DEL NAZARENO",
+                  clientAddress: "LETAMENDI 508 Y NOGUCHI",
+                  clientEmail: "ejemplo1@correo.com"
+              },
+              "1791297407001": {
+                  clientName: "IGLESIA DE DIOS MISION MUNDIA",
+                  clientAddress: "La Revancha",
+                  clientEmail: "programasmanabifacturacion@Hotmail.com"
+              }
+          };
+
+          // Buscar en los datos manuales primero
+          if (manualClientData[clientRUC]) {
+              const data = manualClientData[clientRUC];
+              document.getElementById('clientName').value = data.clientName;
+              document.getElementById('clientAddress').value = data.clientAddress;
+              document.getElementById('clientEmail').value = data.clientEmail;
+              return;
+          }
+
+          // Si no se encuentran en los datos manuales, buscar en localStorage
+          const storedClientData = JSON.parse(localStorage.getItem(clientRUC));
+          if (storedClientData) {
+              document.getElementById('clientName').value = storedClientData.clientName;
+              document.getElementById('clientAddress').value = storedClientData.clientAddress;
+              document.getElementById('clientEmail').value = storedClientData.clientEmail;
+          } else {
+              alert('No se encontraron datos para el RUC proporcionado.');
+          }
+      }
+
+      function handleFormSubmit() {
+          const clientName = document.getElementById('clientName').value;
+          const clientRUC = document.getElementById('clientRUC').value;
+          const clientAddress = document.getElementById('clientAddress').value;
+          const clientEmail = document.getElementById('clientEmail').value;
+          const descriptions = document.querySelectorAll('input[name="description[]"]');
+          const quantities = document.querySelectorAll('input[name="quantity[]"]');
+          const unitPrices = document.querySelectorAll('input[name="unitPrice[]"]');
+
+          saveClientData(clientRUC, clientName, clientAddress, clientEmail);
+
+          const pdfData = generatePDF(clientName, clientRUC, clientAddress, clientEmail, descriptions, quantities, unitPrices);
+          sendEmail(clientName, clientEmail, pdfData);
+      }
+
+      function generatePDF(clientName, clientRUC, clientAddress, clientEmail, descriptions, quantities, unitPrices) {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          const imageFile = './images/Cabeza.jpg';
+          const imageWidth = 180;
+          const imageHeight = 45;
+          doc.addImage(imageFile, 'JPEG', 15, 5, imageWidth, imageHeight,);
+         // Título de la proforma en negritas
+    doc.setFont('Helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(0, 0, 5);
+    doc.text('PROFORMA N°', 110, 60, null, null, 'center');
+
+    // Información del cliente
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+
+    // Razón Social
+    doc.setFont('Helvetica', 'bold');
+    doc.text('CLIENTE: ', 10, 80);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(clientName, 33, 80);
+
+    // RUC
+    doc.setFont('Helvetica', 'bold');
+    doc.text('RUC/CI: ', 10, 85);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(clientRUC, 33, 85);
+
+    // Dirección
+    doc.setFont('Helvetica', 'bold');
+    doc.text('Dirección: ', 10, 90);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(clientAddress, 33, 90);
+
+    // Correo Electrónico
+    doc.setFont('Helvetica', 'bold');
+    doc.text('Email: ', 10, 95);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(clientEmail, 33, 95);
+
+          // Calcular el precio total y agregarlo al PDF
+    const totalPrices = [];
+    for (let i = 0; i < descriptions.length; i++) {
+        totalPrices.push(quantities[i].value * unitPrices[i].value);
+    }
+           const data = [];
+    for (let i = 0; i < descriptions.length; i++) {
+        data.push([
+            quantities[i].value,
+            descriptions[i].value,
+            `$${parseFloat(unitPrices[i].value).toFixed(2)}`, // Formatear como valor monetario
+            `$${totalPrices[i].toFixed(2)}` // Formatear como valor monetario
+        ]);
+    }
+
+           // Estilos de la tabla
+        doc.autoTable({
+        startY: 100,
+        head: [['CANTIDAD', 'DESCRIPCIÓN', 'PRECIO UNITARIO', 'VALOR TOTAL']],
+        body: data,
+        styles: {
+            fontSize: 10,
+            cellPadding: 4,
+            lineWidth: 0.5,
+            lineColor: [0, 0, 0],
+            fontStyle: 'normal',
+            overflow: 'linebreak',
+            fillColor: [255, 255, 255],
+            textColor: [0, 0, 0],
+            halign: 'center',
+            valign: 'middle',
+        },
+        headStyles: {
+            fillColor: [0, 0, 5],
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+            fillColor: [240, 240, 240]
+        },
+        margin: { top: 10 }
+    });
+
+    // Calcular el precio total y agregarlo al PDF
+    const totalPrice = totalPrices.reduce((sum, price) => sum + price, 0).toFixed(2);
+    doc.setFontSize(12);
+    doc.text(`Precio Total:  ${totalPrice}`, 10, doc.autoTable.previous.finalY + 10);
+
+    // Agregar un pie de página
+    doc.setFontSize(25);
+    doc.setTextColor(150);
+    doc.text('PROFORMA VALIDA POR 8 DIAS.', 105, doc.internal.pageSize.height - 10, null, null, 'center');
+
+          doc.save('Proforma.pdf');
+          return doc.output('blob');
+      }
+
+      function sendEmail(clientName, clientEmail, pdfData) {
+          const reader = new FileReader();
+          reader.onload = function() {
+              const base64String = reader.result.split(',')[1];
+              Email.send({
+                  Host: "smtp.elasticemail.com",
+                  Username: "DeviousWind@gmail.com",
+                  Password: "7D26FD36AAC5888410F952E6C1F0F1680FBF",
+                  SecureToken: "956A998B29A3146284735BEEC1DDD90B95E02D2DD02A119D1C64B6253D9C0F7CB43CEE76116A6137112D622765ED9901",
+                  To: clientEmail,
+                  From: "DeviousWind@gmail.com",
+                  Subject: "Proforma Generada",
+                  Body: `Estimado/a ${clientName},<br><br>Adjunto encontrará la proforma solicitada.<br><br>Saludos,<br>Equipo DeviousWind`,
+                  Attachments: [
+                      {
+                          name: "proforma.pdf",
+                          data: base64String
+                      }
+                  ]
+              })
+          };
+          reader.readAsDataURL(pdfData);
+      }
+
+      function saveClientData(clientRUC, clientName, clientAddress, clientEmail) {
+          const clientData = {
+              clientName,
+              clientAddress,
+              clientEmail
+          };
+          localStorage.setItem(clientRUC, JSON.stringify(clientData));
+      }
+    </script>
+</body>
+</html>
+
+
