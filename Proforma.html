@@ -426,26 +426,27 @@
     reader.onload = function() {
         const base64String = reader.result.split(',')[1];
         Email.send({
-            Host: "smtp.gmail.com",
-            Username: "DeviousWind@gmail.com",
-            Password: "DeviousWind543",
-            Port: 465,
+            Host: "smtp-mail.outlook.com",
+            Username: "Michaelalberto13@hotmail.com", // Reemplaza "TuCorreo" con tu dirección de correo de Hotmail
+            Password: "@DeviousWind543", // Reemplaza "TuContraseña" con tu contraseña de Hotmail
+            Port: 587,
             To: clientEmail,
-            From: "DeviousWind@gmail.com",
+            From: "Michaelalberto13@hotmail.com", // Debe ser la misma dirección de correo de Hotmail usada en Username
             Subject: "Proforma Generada",
-            Body: `Estimado/a ${clientName},<br><br>Adjunto encontrará la proforma solicitada.<br><br>Saludos,<br>Equipo DeviousWind`,
+            Body: `Estimado/a ${clientName},<br><br>Adjunto encontrarás la proforma solicitada.<br><br>Saludos,<br>Equipo DeviousWind`,
             Attachments: [
                 {
                     name: "proforma.pdf",
                     data: base64String
                 }
-            ]
+            ],
         }).then(
-            message => alert("Correo electrónico enviado correctamente")
+            message => alert("Correo enviado correctamente")
         );
     };
     reader.readAsDataURL(pdfData);
 }
+
 
 
       function saveClientData(clientRUC, clientName, clientAddress, clientEmail) {
