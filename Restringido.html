@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceder</title> 
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    <meta name="theme-color" content="#000000">
     <meta name="title" content="DeviousWind">
-    <meta name="description" content="Empresa Exitosa">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
             background-size: cover;
             margin: 0;
@@ -46,20 +45,48 @@
             box-sizing: border-box;
         }
 
-        button[type="submit"] {
-            width: 100%;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 3px;
+        .submit {
             cursor: pointer;
-            margin: 10px 0;
+            position: relative;
+            padding: 10px 24px;
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 34px;
+            background-color: transparent;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            overflow: hidden;
         }
 
-        button[type="submit"]:hover {
-            background-color: #333;
+        .submit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            border-radius: inherit;
+            scale: 0;
+            z-index: -1;
+            background-color: rgb(0, 0, 0);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
         }
+
+        .submit:hover::before {
+            scale: 3;
+        }
+
+        .submit:hover {
+            color: #ffffff;
+            scale: 1.1;
+            box-shadow: 0 0px 20px rgba(81, 255, 0, 0.4);
+    }
+
+        .submit:active {
+            scale: 1;
+    }
+        
 
         a.close-icon {
             position: absolute;
@@ -90,7 +117,7 @@
         <form id="loginForm">
             <input type="password" id="password" placeholder="Contraseña">
             <br>
-            <button type="submit">Ingresar</button>
+            <button class="submit">Ingresar</button>
             <p id="loginMessage"></p>
         </form>
     </div>
