@@ -122,10 +122,26 @@
             cursor: pointer;
             z-index: 1100;
         }
-    
+
+        /* Nuevos estilos */
+        .nav__footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            bottom: 20px;
+            width: 100%;
+        }
+
+        .nav__footer img {
+            margin-top: 10px;
+            width: 200px; /* Ajusta el tamaño según sea necesario */
+            height: auto;
+        }
+
         .copyright {
             color: #fff;
             text-align: center;
+            margin-bottom: 50px; /* Espacio entre el copyright y el logo */
         }
     </style>
 </head>
@@ -155,7 +171,10 @@
         <div class="nav__menu">
             <img src="./images/menu.svg" class="nav__img">
         </div>
-        <a class="copyright">Derechos reservados &copy; DeviousWind</a>
+        <div class="nav__footer">
+            <a class="copyright">Derechos reservados &copy; DeviousWind</a>
+            <img src="./images/Logo DW & ARMY.png" alt="Logo de la Empresa">
+        </div>
     </nav>
     <div class="container">
         <h1><i class="icon fas fa-file-invoice-dollar"></i>Generador de Proformas</h1>
@@ -186,11 +205,11 @@
                     <input type="number" id="quantity0" name="quantity[]" required>
                     <label for="unitPrice0">Precio Unitario:</label>
                     <input type="number" step="0.01" id="unitPrice0" name="unitPrice[]" required>
-                    <button type="button" class="removeItemButton"><i class="icon fas fa-trash-alt"></i>Eliminar</button>
+                    <button type="button" class="removeItemButton">Eliminar</button>
                 </div>
             </div>
-            <button type="button" id="addItemButton"><i class="icon fas fa-plus"></i>Añadir Item</button>
-            <button type="submit" class="generateButton"><i class="icon fas fa-file-pdf"></i>Generar Proforma</button>
+            <button type="button" id="addItemButton"><i class="icon fas fa-plus"></i>Agregar Item</button>
+            <button type="submit" id="generateButton" class="generateButton"><i class="icon fas fa-file-alt"></i>Generar Proforma</button>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -457,5 +476,3 @@
     </script>
 </body>
 </html>
-
-
