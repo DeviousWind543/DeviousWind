@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificados de Cursos</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <meta name="theme-color" content="#000000">
+    <meta name="title" content="DeviousWind">
+    <meta name="description" content="Empresa Exitosa">
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        form input, form select {
+            width: calc(100% - 12px);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        form button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        .certificate {
+            background-color: #fff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .certificate-details {
+            flex-grow: 1;
+        }
+
+        .certificate-buttons {
+            margin-left: 1rem;
+        }
+
+        .certificate-buttons button {
+            margin-left: 0.5rem;
+        }
+
+        #search-input {
+            width: calc(100% - 12px);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Certificados de Cursos</h1>
+    </header>
+    <main>
+        <section id="add-certificate">
+            <h2>Agregar Nuevo Certificado</h2>
+            <form id="certificate-form">
+                <label for="course-name">Nombre del Curso:</label>
+                <select id="course-name" name="course-name" required>
+                    <option value="">Seleccionar</option>
+                    <option value="Diseño y Sublimado">Diseño y Sublimado</option>
+                    <option value="Reposteria">Reposteria</option>
+                    <option value="Soldadura General">Soldadura General</option>
+                    <option value="Primeros Auxilios">Primeros Auxilios</option>
+                    <option value="Belleza">Belleza</option>
+                    <option value="Electricidad">Electricidad</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+                
+                <label for="student-name">Nombre del Estudiante:</label>
+                <input type="text" id="student-name" name="student-name" required>
+
+                <label for="student-id">Cédula de Identidad:</label>
+                <input type="text" id="student-id" name="student-id" required>
+
+                <label for="start-date">Fecha de Inicio del Curso:</label>
+                <input type="date" id="start-date" name="start-date" required>
+                
+                <label for="completion-date">Fecha de Finalización:</label>
+                <input type="date" id="completion-date" name="completion-date" required>
+
+                <label for="teacher-name">Nombre del Maestro:</label>
+                <select id="teacher-name" name="teacher-name" required>
+                    <option value="">Seleccionar</option>
+                    <option value="Michael Carrion Chea">Michael Carrion Chea</option>
+                    <option value="Luis Carrion Palacios">Luis Carrion Palacios</option>
+                    <option value="Joselyn Palma Cevallos">Joselyn Palma Cevallos</option>
+                    <option value="Maria Intriago Rezabala">Maria Intriago Rezabala</option>
+                    <option value="Isabel Mero Rosado">Isabel Mero Rosado</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+                
+                <button type="submit">Agregar Certificado</button>
+            </form>
+        </section>
+        <section id="manage-certificates">
+            <h2>Administrar Certificados</h2>
+            <input type="text" id="search-input" placeholder="Buscar por nombre de estudiante o curso">
+            <div id="certificates-list"></div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const certificateForm = document.getElementById('certificate-form');
+            const searchInput = document.getElementById('search-input');
+            const certificatesList = document.getElementById('certificates-list');
+
+            certificateForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                
+                const courseName = document.getElementById('course-name').value;
+                const studentName = document.getElementById('student-name').value;
+                const studentId = document.getElementById('student-id').value;
+                const startDate = document.getElementById('start-date').value;
+                const completionDate = document.getElementById('completion-date').value;
+                const teacherName = document.getElementById('teacher-name').value;
+                
+                try {
+                    const response = await fetch('http://localhost:5000/api/certificates', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            courseName, 
+                            studentName, 
+                            studentId, 
+                            startDate, 
+                            completionDate, 
+                            teacherName 
+                        })
+                    });
+
+                    if (response.ok) {
+                        alert('Certificado agregado exitosamente.');
+                        certificateForm.reset();
+                        loadCertificates(); // Recargar lista de certificados
+                    } else {
+                        console.error('Error al agregar el certificado');
+                        alert('Error al agregar el certificado. Por favor, inténtalo nuevamente.');
+                    }
+                } catch (error) {
+                    console.error('Error al conectar con el servidor:', error.message);
+                    alert('Error al conectar con el servidor. Por favor, inténtalo nuevamente.');
+                }
+            });
+
+            searchInput.addEventListener('input', () => {
+                loadCertificates(searchInput.value);
+            });
+
+            async function loadCertificates(search = '') {
+                try {
+                    const response = await fetch('http://localhost:5000/api/certificates');
+                    const certificates = await response.json();
+                    displayCertificates(certificates.filter(certificate => 
+                        certificate.studentName.toLowerCase().includes(search.toLowerCase()) || 
+                        certificate.courseName.toLowerCase().includes(search.toLowerCase())
+                    ));
+                } catch (error) {
+                    console.error('Error al cargar los certificados:', error.message);
+                }
+            }
+
+            function displayCertificates(certificates) {
+                certificatesList.innerHTML = '';
+                certificates.forEach(certificate => {
+                    const certificateDiv = document.createElement('div');
+                    certificateDiv.classList.add('certificate');
+                    certificateDiv.innerHTML = `
+                        <div class="certificate-details">
+                            <p><strong>Curso:</strong> ${certificate.courseName}</p>
+                            <p><strong>Estudiante:</strong> ${certificate.studentName}</p>
+                            <p><strong>Cédula:</strong> ${certificate.studentId}</p>
+                            <p><strong>Inicio:</strong> ${certificate.startDate}</p>
+                            <p><strong>Finalización:</strong> ${certificate.completionDate}</p>
+                            <p><strong>Maestro:</strong> ${certificate.teacherName}</p>
+                        </div>
+                        <div class="certificate-buttons">
+                            <button onclick="editCertificate(${certificate.id})">Editar</button>
+                            <button onclick="deleteCertificate(${certificate.id})">Eliminar</button>
+                        </div>
+                    `;
+                    certificatesList.appendChild(certificateDiv);
+                });
+            }
+
+            window.deleteCertificate = async function deleteCertificate(certificateId) {
+                try {
+                    const response = await fetch(`http://localhost:5000/api/certificates/${certificateId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Certificado eliminado correctamente.');
+                        loadCertificates(); // Recargar lista de certificados
+                    } else {
+                        const errorMessage = await response.text();
+                        console.error('Error al eliminar el certificado:', errorMessage);
+                        alert(`Error al eliminar el certificado: ${errorMessage}`);
+                    }
+                } catch (error) {
+                    console.error('Error al conectar con el servidor:', error.message);
+                    alert('Error al conectar con el servidor. Por favor, inténtalo nuevamente.');
+                }
+            }
+
+            window.editCertificate = function editCertificate(certificateId) {
+                // Aquí puedes agregar la funcionalidad para editar un certificado
+                alert(`Funcionalidad para editar el certificado con ID: ${certificateId} en desarrollo.`);
+            }
+
+            loadCertificates(); // Cargar certificados al iniciar la página
+        });
+    </script>
+</body>
+</html>

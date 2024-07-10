@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Navegación</title> 
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <meta name="title" content="DeviousWind">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative; /* Agregado para que los elementos absolutos sean relativos a este contenedor */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #e9e9e9;
+        }
+
+        .html-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        a.close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a.close-icon:hover {
+            color: #555;
+        }
+
+        #loginMessage {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>¡Que vas hacer Hoy!</h2>
+        <ul>
+            <li onclick="window.location.href='./Proforma.html';">
+                <div class="html-title">Crear Proformas</div>
+                <div class="html-code">
+                    <!-- Contenido opcional para página 1 -->
+                </div>
+            </li>
+            <li onclick="window.location.href='./CRT.html';">
+                <div class="html-title">Registrar Certificado</div>
+                <div class="html-code">
+                    <!-- Contenido opcional para página 2 -->
+                </div>
+            </li>
+            <li onclick="window.location.href='';">
+                <div class="html-title">EN PROCESO</div>
+                <div class="html-code">
+                    <!-- Contenido opcional para página 3 -->
+                </div>
+            </li>
+            <!-- Agrega más elementos li según sea necesario para más páginas -->
+        </ul>
+        <a href="index.html" class="close-icon">X</a>
+    </div>
+</body>
+</html>

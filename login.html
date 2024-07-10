@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title> 
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/AUT.css">
-    <meta name="theme-color" content="#000000">
-    <meta name="title" content="DeviousWind">
-    <meta name="description" content="Empresa Exitosa">
-  </head>
-  <body>
-    <div class="container">
-      <!-- Agrega el icono de cierre con un enlace a index.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión</title> 
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/AUT.css">
+  <meta name="theme-color" content="#000000">
+  <meta name="title" content="DeviousWind">
+  <meta name="description" content="Empresa Exitosa">
+  <style>
+    button[type="submit"]:hover {
+      background-color: #383838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Agrega el icono de cierre con un enlace a index.html -->
     <div class="footer__x"><a href="index.html" class="close-icon">X</a></div>
-      <h1>Iniciar sesión</h1>
-      <form id="login-form">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" required>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" required>
-        <button type="submit">Iniciar sesión</button>
-      </form>
-      <p>No tienes una cuenta? <a href="registro.html">Regístrate</a></p>
-      <h3 class="footer__copyright">Derechos reservados &copy; DeviousWind</h3>
-    </div>
-    <script src="./js/menu.js"></script>
-    <script src="./js/Pantalla.js"></script>
-    <script src="./js/sorteo.js"></script>
-  </body>
+    <h1>Iniciar sesión</h1>
+    <form id="login-form" action="login.php" method="post">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <p>No tienes una cuenta? <a href="registro.html">Regístrate</a></p>
+    <h3 class="footer__copyright">Derechos reservados &copy; DeviousWind</h3>
+  </div>
+  <script src="./js/menu.js"></script>
+  <script src="./js/Pantalla.js"></script>
+  <script src="./js/sorteo.js"></script>
+</body>
 </html>
-
-
-
