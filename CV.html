@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum Vitae - Michael Carrion</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #060000;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 10px auto;
+            background-color: #1c1c1c;
+            padding: 50px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            padding: 0;
+            position: relative;
+            z-index: 0;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: calc(100% + 100px);
+            height: 150px;
+            background: #000;
+            border-radius: 0 0 50% 50%;
+            z-index: -1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -45px;
+            left: -50px;
+            width: calc(100% + 100px);
+            height: 150px;
+            border-radius: 0 0 50% 50%;
+            z-index: -2;
+            background: linear-gradient(90deg, rgba(0, 255, 0, 0.317), rgba(0, 255, 0, 0.7));
+            background-size: 200% 100%;
+            animation: gradientShift 2s infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
+        }
+
+        .header .octagon {
+            width: 140px;
+            height: 130px;
+            position: relative;
+            top: 30px;
+            margin: 0 auto;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            background: linear-gradient(135deg, #fff 50%, #000 50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .header .profile-pic {
+            width: 100%;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 40px 0 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header h2 {
+            font-size: 18px;
+            color: #ccc;
+            margin: 5px 0;
+            font-weight: 30;
+        }
+
+        .header .location {
+            font-size: 14px;
+            color: #ffffff;
+            margin-top: 20px;
+            font-weight: bold;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+        .header .location::before {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: -10px;
+            width: 240px;
+            height: 100%;
+            background-color: #1aff0098;
+            clip-path: polygon(85% -10%, 90% 90%, 5% 90%, 0% -10%);
+            z-index: -1;
+        }
+
+        .contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.contact-info .contact-card {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.contact-info .contact-card img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.contact-info .contact-card p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info .contact-card a {
+    color: #1aff00;
+    text-decoration: none;
+}
+
+.contact-info .contact-card a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-info {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+}
+
+
+        .section-title {
+            font-size: 22px;
+            margin: 20px 0 10px;
+            color: #23ff69;
+            display: inline-block;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, fr); /* Dos columnas en pantallas grandes */
+            gap: 20px; /* Espacio entre las columnas y filas */
+            margin-bottom: 20px; /* Ajusta el margen para un mejor espaciado */
+        }
+
+        .skill {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .skills {
+                grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills {
+                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+            }
+        }
+
+        .skill .label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            background-color: #333;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            height: 12px;
+            width: 100%;
+        }
+
+        .skill-bar-inner {
+            height: 100%;
+            border-radius: 25px;
+            background-color: #1aff00;
+            width: 0;
+            transition: width 10s ease-in-out;
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+        }
+
+
+        .skill:hover .skill-bar-inner {
+            transition: width 1s ease-in-out;
+        }
+        .checklist {
+            list-style-type: none; /* Elimina los puntos de lista predeterminados */
+            padding: 0;
+        }
+        .checklist li::before {
+            content: "✓ "; /* Agrega el símbolo de visto antes de cada elemento */
+            color: green; /* Cambia el color del símbolo de visto si lo deseas */
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="octagon">
+                <img src="./images/vd.png" alt="Foto de perfil" class="profile-pic">
+            </div>
+            <h1>Michael Alberto Carrion Chea</h1>
+            <h2>Desarrollador de Software/Diseñador Gráfico</h2>
+            <p class="location">Jaramijo – Manabí – Ecuador</p>
+        </div>
+        <div class="contact-info">
+            <div class="contact-card">
+                <img src="https://img.icons8.com/ios-filled/50/1aff00/phone.png" alt="Teléfono">
+                <p>
+                    <span>Teléfono:</span> 
+                    <a href="tel:+593998867509"> 0958867509</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <img src="https://img.icons8.com/ios-filled/50/1aff00/email.png" alt="Correo electrónico">
+                <p>
+                    <span>Correo Electrónico:</span>
+                    <a href="mailto:Michaelalberto13@hotmail.com"> Michaelalberto13@hotmail.com</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <img src="https://img.icons8.com/ios-filled/50/1aff00/instagram-new.png" alt="Instagram">
+                <p>
+                    <span>Portafolio: </span>
+                    <a href="https://www.instagram.com/deviouswind_s.a" target="_blank">deviouswind_s.a</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <img src="https://img.icons8.com/ios-filled/50/1aff00/linkedin.png" alt="LinkedIn">
+                <p>
+                    <span>LinkedIn:</span>
+                    <a href="https://www.linkedin.com/in/michael-carrion" target="_blank">linkedin.com/in/michael-carrion</a>
+                </p>
+            </div>
+        </div>
+        <div class="content">
+            <h3 class="section-title">EXTRACTO PROFESIONAL</h3>
+            <p>Profesional con sólida experiencia en programación, diseño gráfico y sublimación, destacándome en la creación de soluciones creativas y tecnológicas integrales. Con conocimientos avanzados en desarrollo web, Adobe Illustrator, Photoshop, y técnicas de sublimación, he liderado proyectos que combinan innovación, calidad y puntualidad en la entrega. Mi capacidad para transformar ideas en realidades tangibles, junto con una atención meticulosa al detalle, me permite ofrecer resultados que superan las expectativas. He desempeñado roles clave en el diseño y ejecución de proyectos, gestionando desde la conceptualización hasta la entrega final, siempre enfocado en la satisfacción del cliente y la excelencia en cada etapa del proceso. Soy un profesional versátil, creativo y comprometido, listo para aportar valor y contribuir al éxito de la empresa.</p>
+        </div>
+        <div class="content education">
+            <h3 class="section-title">FORMACIÓN ACADÉMICA</h3>
+            <p>2012 - 2018: Título Servicios de Contabilidad - "Dr Teodoro Alvarado Olea" <br>
+            <br>
+            2019 - 2020: Diseñador Grafico - Frelance Cursos Intensivos   <br>
+            <br>
+            2020 - CURSANDO: Ingeniería en Software - Universidad de Guayaquil</p>
+        </div>
+        <div class="content experience">
+            <h3 class="section-title">EXPERIENCIA LABORAL</h3>
+            <p><b>2018 - 2018: Ecuaire S.A</b><br>
+            <p><b>Cargo: </b>Asistente Contable<br>
+                <ul class="checklist">
+                    <li>Registro de inventario </li>
+                        <li>Registro de retenciones </li>
+                            <li>Registro de facturas y declaraciones</li>
+            </ul> 
+            Implementé un sistema integrado de inventarios y facturas en Ecuaire, reduciendo errores en un 30% y mejorando la eficiencia contable en un 20%.
+                </p>
+                <br>
+                <p><b>2019 - 2024: DeviousWind S.A - Emprendimiento</b><br>
+                    <p><b>Cargo: </b>Vendedor, Publicista de Marketing Digital<br>
+                <ul class="checklist">
+                    <li>Ventas al por mayor </li>
+                        <li>Diseñador Gráfico </li>
+                        <li>Desarrollador Web </li>
+                        <li>Transportador</li>
+            </ul>
+            Aumenté las ventas al por mayor en un 30% mediante estrategias de marketing digital, creé más de 200 diseños gráficos personalizados, desarrollé y mantuve la página web incrementando el tráfico en un 40%, y coordiné proyectos de entrega con una eficiencia del 98%.
+                </p>
+                <br>
+                <p><b>2022 - Actualidad: Proyecto/Fundacion Iglesia del Nazareno</b><br>
+                    <p><b>Cargo: </b>Tutor Cognitivo y Profesor de Sublimacion y Diseño<br>
+                    <ul class="checklist">
+                        <li>Enseñanzas en 4 areas, Salud,Emocional,Coginitivo y Espiritual </li>
+                            <li>Formacion de habilidades y destrezsas en Diseño Grafico </li>
+                            <li>Formacion de habilidades y destrezsas en Sublimacion </li>
+                            <li>Documentacion y papeleo </li>
+                </ul>
+                Mejoré el rendimiento académico y creativo de 61 niños y 30 jóvenes en la Fundación Iglesia del Nazareno, con un incremento del 40% en sus habilidades y una reducción del 25% en el tiempo de gestión administrativa.
+                    </p>
+            
+        </div>
+        <div class="content skills">
+            <h3 class="section-title">HABILIDADES</h3>
+            <div class="skill">
+                <div class="label">
+                    <span>Ingles</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="50%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Programación</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="70%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Desarrollador Web</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Diseño Gráfico</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="90%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Sublimación</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="90%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Gestión de Proyectos</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="75%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="label">
+                    <span>Contabilidad</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-inner" data-width="80%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.skill-bar-inner').forEach(bar => {
+                setTimeout(() => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                }, 100); // A small delay to ensure transition effect
+            });
+        });
+    </script>
+</body>
+</html>
