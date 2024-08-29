@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Currículum Vitae - Michael Carrion</title>
     <style>
         body {
@@ -16,7 +17,7 @@
 
         .cv-container {
             max-width: 800px;
-            margin: 10px auto;
+            margin: auto;
             background-color: #1c1c1c;
             padding: 50px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -53,7 +54,7 @@
             height: 150px;
             border-radius: 0 0 50% 50%;
             z-index: -2;
-            background: linear-gradient(90deg, rgba(0, 255, 0, 0.317), rgba(0, 255, 0, 0.7));
+            background: linear-gradient(90deg, rgba(0, 255, 0, 0.26), rgb(0, 255, 0));
             background-size: 200% 100%;
             animation: gradientShift 2s infinite;
         }
@@ -120,42 +121,19 @@
         }
 
         .contact-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 50px;
-    margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas grandes */
+            gap: 20px; /* Espacio entre las columnas y filas */
+            margin-bottom: 20px; /* Ajusta el margen para un mejor espaciado */
 }
 
 .contact-info .contact-card {
     background-color: #333;
     border-radius: 10px;
-    padding: 15px;
-    display: grid;
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     color: #fff;
-}
-
-.contact-info .contact-card img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    display: grid;
-}
-
-.contact-info .contact-card p {
-    margin: 10px;
-    display: grid;
-
-}
-
-.contact-info .contact-card a {
-    color: #1aff00;
-    text-decoration: none;
-}
-
-.contact-info .contact-card a:hover {
-    text-decoration: underline;
+    
 }
 
 @media (max-width: 900px) {
@@ -168,6 +146,28 @@
     .contact-info {
         grid-template-columns: 1fr;
     }
+}
+
+.contact-info .contact-card img {
+    width: 40px;
+    height: 40px;
+
+}
+
+.contact-info .contact-card p {
+    width: -40px;
+    height: -40px;
+    display: column;
+
+}
+
+.contact-info .contact-card a {
+    color: #1aff00;
+    text-decoration: none;
+}
+
+.contact-info .contact-card a:hover {
+    text-decoration: underline;
 }
 
 
@@ -234,7 +234,7 @@
 
 
         .skill:hover .skill-bar-inner {
-            transition: width 1s ease-in-out;
+            transition: width 2s ease-in-out;
         }
         .checklist {
             list-style-type: none; /* Elimina los puntos de lista predeterminados */
@@ -284,7 +284,7 @@
                 <img src="https://img.icons8.com/ios-filled/50/1aff00/linkedin.png" alt="LinkedIn">
                 <p>
                     <span>LinkedIn:</span>
-                    <a href="https://www.linkedin.com/in/michael-carrion" target="_blank">linkedin.com/in/michael-carrion</a>
+                    <a href="https://www.linkedin.com/in/mikecarrion543" target="_blank">Michael Carrion Chea</a>
                 </p>
             </div>
         </div>
@@ -296,7 +296,7 @@
             <h3 class="section-title">FORMACIÓN ACADÉMICA</h3>
             <p>2012 - 2018: Título Servicios de Contabilidad - "Dr Teodoro Alvarado Olea" <br>
             <br>
-            2019 - 2020: Diseñador Grafico - Frelance Cursos Intensivos   <br>
+            2019 - 2020: Diseñador Grafico - Freelancer Cursos Intensivos   <br>
             <br>
             2020 - CURSANDO: Ingeniería en Software - Universidad de Guayaquil</p>
         </div>
