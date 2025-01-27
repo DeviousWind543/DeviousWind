@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .options button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f4f4f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .options button:hover {
+            background-color: #e0e0e0;
+        }
+        .options button.correct {
+            background-color: #c8f7c5;
+        }
+        .options button.wrong {
+            background-color: #f7c5c5;
+        }
+        .next-button {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+        .score {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cuestionario</h1>
+        <div id="quiz">
+            <div class="question" id="question">Cargando pregunta...</div>
+            <ul class="options" id="options"></ul>
+            <button class="next-button" id="nextButton">Siguiente pregunta</button>
+            <div class="score" id="score" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+        { question: "¿Cuáles son los derechos morales y patrimoniales en la protección del derecho de autor?", options: ["Solo patrimoniales", "Morales y patrimoniales", "Solo morales"], answer: 1, points: 5 },
+    { question: "¿Qué es una marca?", options: ["Signo gráfico", "Signo que distingue productos o servicios", "Signo ornamental"], answer: 1, points: 5 },
+    { question: "¿Qué es un diseño industrial?", options: ["Método de producción", "Apariencia u ornamentación de un producto", "Esquema de invención"], answer: 1, points: 5 },
+    { question: "¿Qué son los derechos conexos?", options: ["Derechos de autores", "Derechos de intérpretes, ejecutantes y productores", "Derechos de inventores"], answer: 1, points: 5 },
+    { question: "¿Qué ley rige los derechos de propiedad intelectual?", options: ["Ley de Propiedad Intelectual", "Código Orgánico de la Economía Social de los Conocimientos", "Ley de Comercio Electrónico"], answer: 1, points: 2 },
+    { question: "¿Qué son los derechos intelectuales?", options: ["Creaciones de la mente", "Derechos de propiedad", "Obras públicas"], answer: 0, points: 3 },
+    { question: "¿En cuántas ramas se divide la propiedad intelectual?", options: ["1", "2", "3"], answer: 1, points: 2 },
+    { question: "¿Qué subramas abarca el derecho de autor?", options: ["Creaciones artísticas y literarias", "Marcas y patentes", "Diseños industriales"], answer: 0, points: 3 },
+    { question: "¿Qué es propiedad industrial?", options: ["Protección de creaciones aplicables a la industria", "Creaciones literarias", "Obras musicales"], answer: 0, points: 3 },
+    { question: "¿Qué subramas abarca la propiedad industrial?", options: ["Patentes, marcas, diseños industriales", "Obras literarias", "Derechos conexos"], answer: 0, points: 3 },
+    { question: "¿Cuándo se reconoció por primera vez la propiedad intelectual?", options: ["Convenio de París (1883)", "Convenio de La Habana (1900)", "Convenio de Brasilia (1945)"], answer: 0, points: 2 },
+    { question: "¿Quién administra la propiedad intelectual a nivel mundial?", options: ["OMPI", "IEPI", "SENADI"], answer: 0, points: 2 },
+    { question: "¿Qué es una patente?", options: ["Derecho exclusivo sobre una invención", "Derecho sobre una obra literaria", "Derecho sobre una marca"], answer: 0, points: 2 },
+    { question: "¿Por qué es necesaria la patente?", options: ["Reconocimiento a la creatividad", "Promoción comercial", "Propiedad sobre obras literarias"], answer: 0, points: 3 },
+    { question: "¿Cuál es el tiempo de duración de la patente?", options: ["10 años", "15 años", "20 años"], answer: 2, points: 2 },
+    { question: "¿De qué derechos goza el titular de una patente?", options: ["Derecho exclusivo sobre su invención", "Derecho de transformación", "Derecho de reproducción"], answer: 0, points: 3 },
+    { question: "¿Qué protege la indicación geográfica?", options: ["Productos agrícolas", "Propiedad industrial", "Ninguna"], answer: 0, points: 3 },
+    { question: "¿Qué protege la firma electrónica?", options: ["Integridad de documentos", "Obras literarias", "Diseños industriales"], answer: 0, points: 3 },
+    { question: "¿Qué es comercio electrónico?", options: ["Actividad económica digital", "Creaciones literarias", "Derechos de autor"], answer: 0, points: 3 },
+    { question: "¿Cuáles son las características del contrato electrónico?", options: ["No presencia física simultánea", "Propiedad física", "Registro público"], answer: 0, points: 3 },
+    { question: "¿Qué es un certificado digital?", options: ["Credencial para identificación digital", "Propiedad sobre diseños", "Protección de obras artísticas"], answer: 0, points: 2 },
+    { question: "¿Cuál es la base legal para los contratos electrónicos en Ecuador?", options: ["Ley de Contratos Digitales", "Código de Ingenios", "Ley de Comercio Electrónico"], answer: 2, points: 2 },
+    { question: "¿Qué diferencia hay entre una firma electrónica certificada y avanzada?", options: ["Certificada tiene validez jurídica", "Avanzada usa tecnologías específicas", "Ambas son iguales"], answer: 1, points: 3 },
+    { question: "¿Qué son los derechos conexos?", options: ["Protección a intérpretes y ejecutantes", "Propiedad sobre marcas", "Creaciones industriales"], answer: 0, points: 3 },
+    { question: "¿Cuál es el objetivo de la OMPI?", options: ["Proteger derechos de creadores", "Promover obras públicas", "Regulación de marcas"], answer: 0, points: 3 },
+    { question: "¿Qué protege el derecho de autor?", options: ["Creaciones de la mente", "Propiedad industrial", "Marcas"], answer: 0, points: 3 },
+    { question: "¿Qué protege la OMPI?", options: ["Propiedad intelectual a nivel mundial", "Solo patentes", "Marcas nacionales"], answer: 0, points: 3 },
+    { question: "¿Qué protege un diseño industrial?", options: ["La apariencia de un producto", "Propiedad intelectual", "Software"], answer: 0, points: 3 },
+    { question: "¿Cuáles son las ramas de los derechos patrimoniales?", options: ["Reproducción y distribución", "Transformación y comunicación", "Todas las anteriores"], answer: 2, points: 3 },
+    { question: "¿Qué es una denominación de origen?", options: ["Signo de origen geográfico", "Propiedad literaria", "Derecho conexo"], answer: 0, points: 2 },
+    { question: "¿Cuánto tiempo dura la protección de una indicación geográfica?", options: ["No caduca", "20 años", "10 años"], answer: 0, points: 3 },
+    { question: "¿Qué protege la firma electrónica?", options: ["Seguridad y autenticidad", "Propiedad industrial", "Marcas"], answer: 0, points: 3 },
+    { question: "¿Cuáles son las ventajas del derecho de autor?", options: ["Fomenta creatividad y desarrollo", "Propiedad exclusiva", "Riqueza personal"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre denominación de origen e indicación geográfica?", options: ["La denominación requiere factores humanos", "Ambas son iguales", "Solo aplica a vinos"], answer: 0, points: 3 },
+    { question: "¿Qué son los derechos morales del autor?", options: ["Paternidad e integridad", "Solo paternidad", "Reproducción"], answer: 0, points: 3 },
+    { question: "¿Cuánto tiempo protege el diseño industrial?", options: ["5 años, renovables", "10 años, renovables", "Indefinido"], answer: 0, points: 3 },
+    { question: "¿Qué protege el comercio electrónico?", options: ["Venta online", "Derecho comercial", "Propiedad intelectual"], answer: 0, points: 3 },
+    { question: "¿Qué es un contrato electrónico?", options: ["Contrato celebrado en línea", "Documento físico", "Derecho comercial"], answer: 0, points: 3 },
+    { question: "¿Qué regula el Código de Ingenios?", options: ["Derechos de autor y propiedad intelectual", "Solo marcas", "Solo patentes"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre una firma electrónica certificada y avanzada?", options: ["La avanzada requiere tecnologías específicas", "Ambas son iguales", "La certificada tiene validez jurídica"], answer: 0, points: 3 },
+    { question: "¿Cuáles son los fundamentos del comercio electrónico?", options: ["Seriedad, transparencia y confianza", "Garantías comerciales", "Propiedad física"], answer: 0, points: 3 },
+    { question: "¿Qué son los derechos patrimoniales del derecho de autor?", options: ["Reproducción, distribución y comunicación pública", "Solo comunicación pública", "Derechos sobre ejemplares únicos"], answer: 0, points: 3 },
+    { question: "¿Qué protege una marca?", options: ["Identificación de productos o servicios", "Propiedad industrial", "Obras artísticas"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre un diseño industrial y una patente?", options: ["El diseño protege la apariencia", "No hay diferencias", "La patente protege todo"], answer: 0, points: 3 },
+    { question: "¿Qué se entiende por comercio electrónico?", options: ["Actividad económica digital", "Solo venta de productos", "Propiedad industrial"], answer: 0, points: 3 },
+    { question: "¿Qué regula la OMPI?", options: ["La propiedad intelectual global", "Solo patentes", "Marcas comerciales nacionales"], answer: 0, points: 3 },
+    { question: "¿Qué son los derechos conexos?", options: ["Derechos de intérpretes y productores", "Propiedad literaria", "Patentes"], answer: 0, points: 3 },
+    { question: "¿Qué protege una indicación geográfica?", options: ["Productos con características específicas por su origen", "Propiedad industrial", "Obras artísticas"], answer: 0, points: 3 },
+    { question: "¿Qué protege la firma electrónica en los contratos?", options: ["Seguridad y no repudio", "Propiedad literaria", "Garantías digitales"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre derecho de autor y propiedad industrial?", options: ["El autor protege obras artísticas", "Ambos protegen lo mismo", "Solo aplica a patentes"], answer: 0, points: 3 },
+    { question: "¿Qué es una indicación geográfica protegida (IGP)?", options: ["Protege la calidad y origen del producto", "Solo aplica a vinos", "Propiedad industrial"], answer: 0, points: 3 },
+    { question: "¿Qué protege el diseño industrial?", options: ["La apariencia estética de un producto", "La funcionalidad del producto", "Patentes"], answer: 0, points: 3 },
+    { question: "¿Qué regula el comercio electrónico?", options: ["Transacciones digitales", "Obras literarias", "Propiedad intelectual"], answer: 0, points: 3 },
+    { question: "¿Qué es el derecho moral del autor?", options: ["Protege la integridad de su obra", "Garantiza la venta exclusiva", "Solo aplica a patentes"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre patentes y derechos de autor?", options: ["Las patentes protegen invenciones", "Ambos son iguales", "El derecho de autor protege invenciones"], answer: 0, points: 3 },
+    { question: "¿Cuáles son los elementos básicos de un contrato electrónico?", options: ["Consentimiento y oferta digital", "Documentación física", "Garantías públicas"], answer: 0, points: 3 },
+    { question: "¿Qué son los derechos patrimoniales?", options: ["Permiten explotar económicamente la obra", "Garantizan la paternidad", "Protegen obras literarias"], answer: 0, points: 3 },
+    { question: "¿Qué protege una marca registrada?", options: ["La identidad de un producto o servicio", "Obras literarias", "Diseños industriales"], answer: 0, points: 3 },
+    { question: "¿Qué diferencia hay entre OMPI y las oficinas nacionales?", options: ["La OMPI regula a nivel global", "Ambas tienen la misma función", "Solo protegen marcas"], answer: 0, points: 3 },
+    { question: "¿Qué protege una patente?", options: ["Una invención técnica", "Un diseño gráfico", "Solo obras literarias"], answer: 0, points: 3 },
+    { question: "¿Qué regula el Código de Comercio Electrónico?", options: ["Transacciones digitales y firmas electrónicas", "Propiedad intelectual", "Obras literarias"], answer: 0, points: 3 },
+    { question: "¿Qué protege una denominación de origen?", options: ["Productos de calidad con características específicas de origen", "Patentes", "Diseños industriales"], answer: 0, points: 3 },
+    { question: "¿Qué protege el derecho de reproducción en los derechos de autor?", options: ["La copia de la obra", "La comercialización exclusiva", "El diseño industrial"], answer: 0, points: 3 },
+    { question: "¿Qué protege el derecho de distribución en los derechos patrimoniales?", options: ["La venta o cesión de copias", "La creación de nuevas obras", "Patentes"], answer: 0, points: 3 }
+        ];
+
+        let currentQuestion = 0;
+        let totalScore = 0;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const nextButton = document.getElementById("nextButton");
+        const scoreElement = document.getElementById("score");
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            questionElement.textContent = `${currentQuestion + 1}. ${q.question} (${q.points} puntos)`;
+            optionsElement.innerHTML = "";
+
+            q.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.onclick = () => checkAnswer(index);
+                optionsElement.appendChild(button);
+            });
+
+            nextButton.style.display = "none";
+        }
+
+        function checkAnswer(selected) {
+            const q = questions[currentQuestion];
+            const buttons = optionsElement.querySelectorAll("button");
+
+            buttons.forEach((button, index) => {
+                if (index === q.answer) {
+                    button.classList.add("correct");
+                    if (index === selected) {
+                        totalScore += q.points;
+                        correctAnswers++;
+                    }
+                } else {
+                    button.classList.add("wrong");
+                    if (index === selected) {
+                        wrongAnswers++;
+                    }
+                }
+                button.disabled = true;
+            });
+
+            nextButton.style.display = "block";
+        }
+
+        nextButton.onclick = () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showFinalScore();
+            }
+        };
+
+        function showFinalScore() {
+            questionElement.textContent = "¡Has completado el cuestionario!";
+            optionsElement.innerHTML = "";
+            nextButton.style.display = "none";
+            scoreElement.style.display = "block";
+            scoreElement.textContent = `Puntaje final: ${totalScore} puntos. 🎓\nPreguntas correctas: ${correctAnswers}\nPreguntas incorrectas: ${wrongAnswers}`;
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
