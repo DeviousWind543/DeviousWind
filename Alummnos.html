@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduados del Curso de Sublimación</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ABF456, #F5BFF7);
+            margin: 0;
+            padding: 50px;
+            color: white;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #000000;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            max-width: 120px; /* Ajusta el tamaño del logo */
+            height: auto;
+            margin-right: 75px;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+            color: #4a4a4a;
+        }
+        .back-arrow {
+            font-size: 24px;
+            cursor: pointer;
+            color: #000;
+            transition: transform 0.3s;
+        }
+        .back-arrow:hover {
+            color: #F5BFF7;
+            transform: scale(1.1);
+            margin-right: 0px;
+        }
+        input {
+            width: 80%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+        .lista-graduados {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .graduado {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .graduado:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .graduado img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .graduado p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .graduado a {
+            text-decoration: none;
+            color: #00b909;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+        .graduado a:hover {
+            color: #F5BFF7;
+        }
+        #resultado {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <i class="fas fa-arrow-left back-arrow" onclick="goBack()"></i>
+    <section class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="images/Logo actual.png" alt="Logo" class="logo-img">
+                <h2>Graduados del Curso de Sublimación</h2>
+            </div>
+        </div>
+        <input type="text" id="search" placeholder="Ingrese número de cédula" onkeyup="verificarCertificado()">
+        <div id="resultado"></div>
+        <div class="lista-graduados">
+            <div class="graduado" data-cedula="1316104510">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Bermello Mero Flor Valeska</strong></p>
+                <p>Cédula: 1316104510</p>
+                <p>Correo: florbermello12@gmail.com</p>
+                <a href="certificados/certificado_1316104510.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Bermello Rosado Jostin Alexander</strong></p>
+                <p>Cédula: 1317695649</p>
+                <p>Correo: jostinrosado83@gmail.com</p>
+                <a href="certificados/certificado_1.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Bravo Benavides Misael Alejandro</strong></p>
+                <p>Cédula: No disponible</p>
+                <p>Correo: No disponible</p>
+                <a href="certificados/certificado_3.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="0959222779">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Carrion Chea Isaac David</strong></p>
+                <p>Cédula: 0959222779</p>
+                <p>Correo: isaacdcc27@gmail.com</p>
+                <a href="certificados/certificado_0959222779.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="1312961681">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Castro Delgado Maria Jessenia</strong></p>
+                <p>Cédula: 1312961681</p>
+                <p>Correo: maria2022castro87@gmail.com</p>
+                <a href="certificados/certificado_1312961681.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="1750175224">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Espinales Delgado Miley Catalina</strong></p>
+                <p>Cédula: 1750175224</p>
+                <p>Correo: espinalesdelgadomiley@gmail.com</p>
+                <a href="certificados/certificado_1750175224.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="1312733841">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Hernandes Mero Maria Veronica</strong></p>
+                <p>Cédula: 1312733841</p>
+                <p>Correo: veronicahernandezmero@gmail.com</p>
+                <a href="certificados/certificado_1312733841.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="2200113955">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Jaramillo Napa Anthony</strong></p>
+                <p>Cédula: 2200113955</p>
+                <p>Correo: anthonyjaramillo1421@gmail.com</p>
+                <a href="certificados/certificado_2200113955.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Lopez Pinargote Leidy Zuleika</strong></p>
+                <p>Cédula: No disponible</p>
+                <p>Correo: No disponible</p>
+                <a href="certificados/certificado_8.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Macias Lopez Jonathan David</strong></p>
+                <p>Cédula: No disponible</p>
+                <p>Correo: No disponible</p>
+                <a href="certificados/certificado_9.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="1317591657">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Macias Lopez Erick Gabriel</strong></p>
+                <p>Cédula: 1317591657</p>
+                <p>Correo: stevenmacias2020@gmail.com</p>
+                <a href="certificados/certificado_1317591657.pdf" target="_blank">Descargar certificado</a>
+            </div>
+            
+            <div class="graduado" data-cedula="">
+                <img src="avatar.png" alt="Foto del graduado">
+                <p><strong>Rosado Castro Kevin Leandro</strong></p>
+                <p>Cédula: No disponible</p>
+                <p>Correo: No disponible</p>
+                <a href="certificados/certificado_12.pdf" target="_blank">Descargar certificado</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function verificarCertificado() {
+            const input = document.getElementById('search').value;
+            const graduados = document.querySelectorAll('.graduado');
+            let encontrado = false;
+            graduados.forEach(graduado => {
+                if (graduado.dataset.cedula === input) {
+                    document.getElementById('resultado').innerHTML = `Certificado encontrado: <a href="certificados/certificado_${input}.pdf" target="_blank">Descargar aquí</a>`;
+                    encontrado = true;
+                }
+            });
+            if (!encontrado) {
+                document.getElementById('resultado').innerHTML = 'Certificado no encontrado';
+            }
+        }
+
+        function goBack() {
+            window.location.href = "CDGS.html"; // Cambia esto por la URL a la que quieres volver
+        }
+    </script>
+</body>
+</html>
