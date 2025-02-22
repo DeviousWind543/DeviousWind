@@ -1,0 +1,318 @@
+/* Puedes ajustar otros estilos según tus necesidades */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+:root {
+    --padding-container: 25px 0; /* Ajusta el padding según sea necesario */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ABF456, #F5BFF7);
+    margin: 0;
+    padding: 0;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.image-gallery img, .cover-photo {
+    margin: 0 auto; /* Centra horizontalmente */
+    width: 100%;
+    max-width: 800px;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.cover-photo {
+    display: grid;
+    place-items: center; /* Centra tanto horizontal como verticalmente */
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn:hover {
+    background: #32ff23;
+    color: rgb(0, 0, 0);
+}
+
+/* Estilos para la vista móvil */
+@media (max-width: 750px) {
+    .catalogo-container {
+        flex-direction: column; /* Cambiamos a dirección de columna en la vista móvil */
+    }
+
+    .catalogo {
+        order: 1; /* Cambiamos el orden a 1 en la vista móvil */
+        text-align: center; /* Centramos el texto en la vista móvil si es necesario */
+    }
+
+    .search-bar {
+        margin-right: auto;
+        order: 2; /* Cambiamos el orden a 2 en la vista móvil */
+        text-align: center; /* Centramos la barra de búsqueda en la vista móvil si es necesario */
+    }
+}
+.nav__logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+
+.nav__title {
+    margin: 0; /* Elimina el margen superior predeterminado */
+}
+
+#reloj {
+    display: flex;
+    justify-content: justify;
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+    width: 100%;
+    
+}
+
+
+h1 {
+    margin: 20px 0;
+    color: #000000;    
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 32px;
+}
+p {
+    text-align: justify; /* Justifica el texto */
+    margin: 20px 0; /* Añade un margen superior e inferior */
+    line-height: 1.6; /* Mejora la legibilidad con un interlineado adecuado */
+    color: #333; /* Color del texto */
+}
+
+.about__icon {
+    transition: transform 0.4s; /* Agregamos una transición suave */
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--padding-container);
+}
+
+.hero {
+    width: 100%;
+    min-height: 600px;
+    max-height: 800px;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+    position: absolute;
+    overflow: hidden; 
+}
+.hero__container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 3rem;
+}
+
+.hero__paragraph {
+    margin-bottom: 20px;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+    z-index: 1000;
+    color: #fff;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 125px;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(97, 95, 95, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Nav */
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav__title {
+    font-weight: 300;
+}
+
+.nav__link {
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 2em;
+}
+
+.nav__items {
+    list-style: none;
+}
+
+.nav__links {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav__menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav__img {
+    display: block;
+    width: 30px;
+}
+
+
+.nav__close {
+    display: var(--show, none);
+}
+
+/* About */
+
+
+/* Footer */
+
+.footer{
+    background-color: #000000;
+    display: block; /* Valor válido */
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer__title{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+.footer__newsletter{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    
+}
+
+.footer__title, .footer__newsletter{
+    color: #fff;
+}
+
+
+.footer__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 60px;
+}
+
+.nav--footer {
+    padding-bottom: 20px;
+    display: grid;
+    gap: 1em;
+    grid-auto-flow: row;
+}
+
+.nav__link--footer{
+    display: flex;
+    margin: 0;
+    margin-right: 20px;
+    flex-wrap: wrap;
+}
+
+.footer__inputs{
+    margin-top: 10px;
+    display: flex;
+}
+
+.footer__input{
+    background-color: #fff;
+    height: 50px;
+    display: block;
+    padding-left: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    margin-right: 16px;
+}
+
+.footer__submit{
+    margin-left: auto;
+    display: inline-block;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #fffdfd;
+    border: none;
+    font-size: 1rem;
+    color: #000000;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.footer__copy{
+    --padding-container: 30px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer__copyright{
+    font-weight: 300;
+}
+
+.footer__icons{
+    margin-bottom: 10px;
+}
+
+.footer__img{
+    width: 30px;
+}
