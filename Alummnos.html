@@ -31,6 +31,7 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         .logo {
             display: flex;
@@ -110,10 +111,46 @@
             font-size: 16px;
             font-weight: bold;
         }
+        /* Diseño para pantallas pequeñas */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    input[type="text"], button {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+}
+/* Responsivo */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column; /* Alinea el logo y el título en columna */
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        width: 100%;
+    }
+
+    .logo-img {
+        width: 100px; /* Ajusta el tamaño del logo */
+        display: block; /* Evita espacios en línea */
+        margin: 0 auto; /* Centra la imagen horizontalmente */
+    }
+
+    .header h2 {
+        font-size: 20px; /* Reduce el tamaño del texto en pantallas pequeñas */
+    }
+}
+
     </style>
 </head>
 <body>
-    <i class="fas fa-arrow-left back-arrow" onclick="goBack()"></i>
     <section class="container">
         <div class="header">
             <div class="logo">
@@ -121,31 +158,35 @@
                 <h2>Graduados del Curso de Sublimación</h2>
             </div>
         </div>
-        <input type="text" id="search" placeholder="Ingrese número de cédula" onkeyup="verificarCertificado()">
+        <div class="search-container">
+            <i class="fas fa-arrow-left back-arrow" onclick="goBack()"></i>
+            <input type="text" id="search" placeholder="Ingrese número de cédula" onkeyup="verificarCertificado()">
+        </div>
+        
         <div id="resultado"></div>
         <div class="lista-graduados">
             <div class="graduado" data-cedula="1316104510">
-                <img src="avatar.png" alt="Foto del graduado">
+                <img src="./images/Estudiantes/E2.jpg" alt="Foto del graduado">
                 <p><strong>Bermello Mero Flor Valeska</strong></p>
                 <p>Cédula: 1316104510</p>
                 <p>Correo: florbermello12@gmail.com</p>
                 <a href="certificados/certificado_1316104510.pdf" target="_blank">Descargar certificado</a>
             </div>
             
-            <div class="graduado" data-cedula="">
-                <img src="avatar.png" alt="Foto del graduado">
+            <div class="graduado" data-cedula="131769564">
+                <img src="./images/Estudiantes/E1.jpg" alt="Foto del graduado">
                 <p><strong>Bermello Rosado Jostin Alexander</strong></p>
                 <p>Cédula: 1317695649</p>
                 <p>Correo: jostinrosado83@gmail.com</p>
-                <a href="certificados/certificado_1.pdf" target="_blank">Descargar certificado</a>
+                <a href="certificados/certificado_1317695649.pdf" target="_blank">Descargar certificado</a>
             </div>
             
-            <div class="graduado" data-cedula="">
-                <img src="avatar.png" alt="Foto del graduado">
+            <div class="graduado" data-cedula="0954500674">
+                <img src="./images/Estudiantes/E.jpg" alt="Foto del graduado">
                 <p><strong>Bravo Benavides Misael Alejandro</strong></p>
-                <p>Cédula: No disponible</p>
+                <p>Cédula: 0954500674</p>
                 <p>Correo: No disponible</p>
-                <a href="certificados/certificado_3.pdf" target="_blank">Descargar certificado</a>
+                <a href="certificados/certificado_0954500674.pdf" target="_blank">Descargar certificado</a>
             </div>
             
             <div class="graduado" data-cedula="0959222779">
@@ -188,20 +229,20 @@
                 <a href="certificados/certificado_2200113955.pdf" target="_blank">Descargar certificado</a>
             </div>
             
-            <div class="graduado" data-cedula="">
-                <img src="avatar.png" alt="Foto del graduado">
+            <div class="graduado" data-cedula="1315176915">
+                <img src="./images/Estudiantes/E3.jpg" alt="Foto del graduado">
                 <p><strong>Lopez Pinargote Leidy Zuleika</strong></p>
-                <p>Cédula: No disponible</p>
+                <p>Cédula: 1315176915</p>
                 <p>Correo: No disponible</p>
-                <a href="certificados/certificado_8.pdf" target="_blank">Descargar certificado</a>
+                <a href="certificados/certificado_1315176915.pdf" target="_blank">Descargar certificado</a>
             </div>
             
-            <div class="graduado" data-cedula="">
+            <div class="graduado" data-cedula="1352163982">
                 <img src="avatar.png" alt="Foto del graduado">
                 <p><strong>Macias Lopez Jonathan David</strong></p>
-                <p>Cédula: No disponible</p>
+                <p>Cédula: 1352163982</p>
                 <p>Correo: No disponible</p>
-                <a href="certificados/certificado_9.pdf" target="_blank">Descargar certificado</a>
+                <a href="certificados/certificado_1352163982.pdf" target="_blank">Descargar certificado</a>
             </div>
             
             <div class="graduado" data-cedula="1317591657">
@@ -212,12 +253,12 @@
                 <a href="certificados/certificado_1317591657.pdf" target="_blank">Descargar certificado</a>
             </div>
             
-            <div class="graduado" data-cedula="">
+            <div class="graduado" data-cedula="1315351294">
                 <img src="avatar.png" alt="Foto del graduado">
                 <p><strong>Rosado Castro Kevin Leandro</strong></p>
-                <p>Cédula: No disponible</p>
+                <p>Cédula: 1315351294</p>
                 <p>Correo: No disponible</p>
-                <a href="certificados/certificado_12.pdf" target="_blank">Descargar certificado</a>
+                <a href="certificados/certificado_1315351294.pdf" target="_blank">Descargar certificado</a>
             </div>
         </div>
     </section>
