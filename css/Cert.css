@@ -51,23 +51,7 @@ body {
     color: rgb(0, 0, 0);
 }
 
-/* Estilos para la vista móvil */
-@media (max-width: 750px) {
-    .catalogo-container {
-        flex-direction: column; /* Cambiamos a dirección de columna en la vista móvil */
-    }
 
-    .catalogo {
-        order: 1; /* Cambiamos el orden a 1 en la vista móvil */
-        text-align: center; /* Centramos el texto en la vista móvil si es necesario */
-    }
-
-    .search-bar {
-        margin-right: auto;
-        order: 2; /* Cambiamos el orden a 2 en la vista móvil */
-        text-align: center; /* Centramos la barra de búsqueda en la vista móvil si es necesario */
-    }
-}
 .nav__logo {
     display: flex;
     align-items: center; /* Alinea verticalmente los elementos */
@@ -102,6 +86,7 @@ p {
 
 .about__icon {
     transition: transform 0.4s; /* Agregamos una transición suave */
+    cursor: pointer; 
 }
 
 
