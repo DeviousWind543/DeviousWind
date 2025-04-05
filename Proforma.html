@@ -434,7 +434,7 @@
     // Agregar un pie de página
     doc.setFontSize(25);
     doc.setTextColor(150);
-    doc.text('PROFORMA VALIDA POR 8 DIAS.', 105, doc.internal.pageSize.height - 10, null, null, 'center');
+    doc.text('PROFORMA VALIDA POR 8 DIAS/TRANSPORTACION INCLUIDA', 105, doc.internal.pageSize.height - 10, null, null, 'center');
 
           doc.save('Proforma.pdf');
           return doc.output('blob');
