@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Navegación</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #24401a, #000);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    a {
+    text-decoration: none;
+    color: inherit;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      text-align: center;
+      background: linear-gradient(90deg, #00ff33, #68fb71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .menu-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      background: #111;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    .menu-card:hover img {
+      filter: brightness(1);
+    }
+
+    .menu-content {
+      padding: 15px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .menu-content h3 {
+      margin: 10px 0 5px;
+      color: #ccf8b9;
+    }
+
+    .menu-content p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .btn-principal {
+      margin-top: 35px;
+      background: linear-gradient(90deg, #20f820, #a1ff8c);
+      color: #1e1414;
+      font-weight: 700;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-principal:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #09ff00;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .menu-card img {
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1> Elige a dónde ir</h1>
+
+  <div class="menu-grid">
+    <a href="https://regions-stars-previously-serves.trycloudflare.com" class="menu-card" target="_blank">
+    <img src="images/kairos.jpg" alt="IDD Kairos">
+    <div class="menu-content">
+        <h3>IDD Kairos</h3>
+        <p>Plataforma de la Iglesia de Dios "Kairos" donde se gestionan las clases bíblicas.</p>
+    </div>
+    </a>
+
+    <a href="index.html" class="menu-card">
+      <img src="images/PDW.jpg" alt="Página 2">
+      <div class="menu-content">
+        <h3>DeviousWind & Army</h3>
+        <p>Descubre los servicios y productos que ofrecemos.</p>
+      </div>
+    </a>
+
+    <a href="pagina3.html" class="menu-card">
+      <img src="https://images.unsplash.com/photo-1590608897400-89757af74f54" alt="Página 3">
+      <div class="menu-content">
+        <h3>Galería</h3>
+        <p>Mira nuestros últimos proyectos y diseños.</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/message/76HFLHEBBM4VB1" class="menu-card">
+      <img src="images/WhatsApp.jpg" alt="Contacto">
+      <div class="menu-content">
+        <h3>Contacto</h3>
+        <p>Comunícate con nosotros fácilmente.</p>
+      </div>
+    </a>
+  </div>
+
+  <a href="index.html" class="btn-principal">⬅ Volver a la Página Principal</a>
+
+</body>
+</html>
