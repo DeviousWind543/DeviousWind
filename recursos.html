@@ -1,159 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Navegación</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio DW</title>
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #24401a, #000);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: #fff;
-      overflow-x: hidden;
-    }
-    a {
-    text-decoration: none;
-    color: inherit;
-    }
-    h1 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-      text-align: center;
-      background: linear-gradient(90deg, #00ff33, #68fb71);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+<link rel="shortcut icon" href="./images/favicon.png">
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      width: 90%;
-      max-width: 1000px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    .menu-card {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-      background: #111;
-    }
+<style>
 
-    .menu-card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    .menu-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      filter: brightness(0.8);
-      transition: filter 0.3s ease;
-    }
+html,body{
+width:100%;
+overflow-x:hidden;
+}
 
-    .menu-card:hover img {
-      filter: brightness(1);
-    }
+/* 🔥 CANVAS FONDO */
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
 
-    .menu-content {
-      padding: 15px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-    }
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#0f0f0f,#000);
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:25px 16px;
+}
 
-    .menu-content h3 {
-      margin: 10px 0 5px;
-      color: #ccf8b9;
-    }
+/* TODO ENCIMA DEL CANVAS */
+.header,
+h1,
+.menu-grid,
+.btn-principal{
+position:relative;
+z-index:2;
+}
 
-    .menu-content p {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+/* HEADER */
 
-    .btn-principal {
-      margin-top: 35px;
-      background: linear-gradient(90deg, #20f820, #a1ff8c);
-      color: #1e1414;
-      font-weight: 700;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+.header{
+width:100%;
+max-width:1100px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:35px;
+}
 
-    .btn-principal:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #09ff00;
-    }
+.logo{
+font-weight:600;
+font-size:1.1rem;
+color:#eaeaea;
+transition:.2s;
+}
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      .menu-card img {
-        height: 130px;
-      }
-    }
-  </style>
+.logo:hover{
+opacity:.8;
+}
+
+/* ACCIONES */
+
+.actions{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.cv-icon{
+width:36px;
+height:36px;
+border-radius:50%;
+background:#1a1a1a;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid #333;
+transition:.2s;
+}
+
+.cv-icon:hover{
+background:#2a2a2a;
+}
+
+.cv-icon svg{
+width:18px;
+fill:white;
+}
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+padding:7px 14px;
+background:#25D366;
+border-radius:20px;
+font-size:.8rem;
+font-weight:500;
+color:white;
+transition:.2s;
+}
+
+.whatsapp-btn:hover{
+background:#1ebe5d;
+}
+
+/* TITULO */
+
+h1{
+font-size:1.9rem;
+margin-bottom:35px;
+text-align:center;
+font-weight:600;
+}
+
+/* GRID */
+
+.menu-grid{
+width:100%;
+max-width:1100px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+/* CARD */
+
+.menu-card{
+position:relative;
+background:rgba(20,20,20,.6);
+border-radius:14px;
+overflow:hidden;
+transition:.25s;
+border:1px solid #1f1f1f;
+backdrop-filter:blur(6px);
+}
+
+.menu-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,.6);
+border-color:#333;
+}
+
+/* INFO BTN */
+
+.info-btn{
+position:absolute;
+top:10px;
+right:10px;
+width:28px;
+height:28px;
+background:rgba(0,0,0,.6);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+backdrop-filter:blur(4px);
+transition:.2s;
+z-index:3;
+}
+
+.info-btn:hover{
+background:#25D366;
+}
+
+/* IMG */
+
+.menu-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+}
+
+/* CONTENIDO */
+
+.menu-content{
+padding:16px;
+}
+
+.menu-content h3{
+font-size:1rem;
+margin-bottom:6px;
+font-weight:600;
+}
+
+.menu-content p{
+font-size:.85rem;
+color:#aaa;
+line-height:1.4;
+}
+
+/* BOTON */
+
+.btn-principal{
+margin-top:35px;
+padding:11px 24px;
+border-radius:25px;
+background:#1f1f1f;
+border:1px solid #333;
+font-weight:500;
+transition:.2s;
+}
+
+.btn-principal:hover{
+background:#2a2a2a;
+}
+
+/* LINKS */
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+.actions{
+align-self:flex-end;
+}
+h1{
+font-size:1.5rem;
+}
+.menu-card img{
+height:130px;
+}
+}
+
+</style>
 </head>
+
 <body>
 
-  <h1> Elige a dónde ir</h1>
+<!-- 🔥 CANVAS -->
+<canvas id="particles"></canvas>
 
-  <div class="menu-grid">
-    <a href="https://six-enclosure-ghz-benefits.trycloudflare.com" class="menu-card">
-    <img src="images/IDD.jpg" alt="página 1">
-    <div class="menu-content">
-        <h3>IDD Kairos</h3>
-        <p>Plataforma de la Iglesia de Dios "Kairos" donde se gestionan las clases bíblicas.</p>
-    </div>
-    </a>
+<div class="header">
 
-    <a href="index.html" class="menu-card">
-      <img src="images/PDW.jpg" alt="Página 2">
-      <div class="menu-content">
-        <h3>DeviousWind & Army</h3>
-        <p>Descubre los servicios y productos que ofrecemos.</p>
-      </div>
-    </a>
+<a href="CV.html" class="logo">
+Desarrollador DeviousWind
+</a>
 
-    <a href="https://deviouswind543.github.io/DEVIOUSWIND_STREAMING/" class="menu-card">
-      <img src="images/DWST.png" alt="Página 3">
-      <div class="menu-content">
-        <h3>DEVIOUSWIND STREAMING</h3>
-        <p>Plataforma de Streaming de Series y Peliculas</p>
-      </div>
-    </a>
+<div class="actions">
 
-    <a href="https://wa.me/message/76HFLHEBBM4VB1" class="menu-card">
-      <img src="images/WhatsApp.jpg" alt="Contacto">
-      <div class="menu-content">
-        <h3>Contacto</h3>
-        <p>Comunícate con nosotros fácilmente.</p>
-      </div>
-    </a>
-  </div>
+<a href="CV.html" class="cv-icon">
+<svg viewBox="0 0 24 24">
+<path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 
+2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 
+1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+</svg>
+</a>
 
-  <a href="index.html" class="btn-principal">⬅ Volver a la Página Principal</a>
+<a href="https://wa.me/message/76HFLHEBBM4VB1" class="whatsapp-btn">
+Contacto
+</a>
+
+</div>
+
+</div>
+
+<h1>Elige a dónde ir</h1>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+<a href="info-faithcore.html" class="info-btn">i</a>
+<a href="info-faithcore.html">
+<img src="images/FaithCore Logo.png">
+<div class="menu-content">
+<h3>FaithCore</h3>
+<p>Plataforma central de gestión cristiana que permite administrar clases, asistencias, publicaciones y comunidad.</p>
+</div>
+</a>
+</div>
+
+<div class="menu-card">
+<a href="info-deviouswind.html" class="info-btn">i</a>
+<a href="info-deviouswind.html">
+<img src="images/Logo DW-2026.jpg">
+<div class="menu-content">
+<h3>DeviousWind & Army</h3>
+<p>Descubre los servicios y productos que ofrecemos.</p>
+</div>
+</a>
+</div>
+
+<div class="menu-card">
+<a href="info-streaming.html" class="info-btn">i</a>
+<a href="info-streaming.html">
+<img src="images/STREAMING Logo.jpg">
+<div class="menu-content">
+<h3>DEVIOUSWIND STREAMING</h3>
+<p>Plataforma de Streaming de Series y Películas</p>
+</div>
+</a>
+</div>
+
+<div class="menu-card">
+<a href="info-contacto.html" class="info-btn">i</a>
+<a href="https://wa.me/message/76HFLHEBBM4VB1">
+<img src="images/WhatsApp.jpg">
+<div class="menu-content">
+<h3>Contacto</h3>
+<p>Comunícate con nosotros fácilmente.</p>
+</div>
+</a>
+</div>
+
+</div>
+
+<a href="index.html" class="btn-principal">
+⬅ Volver a la Página Principal
+</a>
+
+<script>
+
+/* 🔥 PARTICULAS FUEGO VERDE */
+
+const canvas = document.getElementById("particles")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+let particles = []
+
+class Particle{
+constructor(){
+this.x = Math.random() * canvas.width
+this.y = canvas.height + Math.random()*100
+this.size = Math.random() * 3 + 1
+this.speedY = Math.random() * 1.8 + 0.8
+this.speedX = (Math.random() - 0.5) * 0.5
+this.opacity = Math.random()
+}
+
+update(){
+this.y -= this.speedY
+this.x += this.speedX
+this.opacity -= 0.004
+if(this.opacity <= 0){
+this.reset()
+}
+}
+
+draw(){
+ctx.beginPath()
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2)
+ctx.fillStyle = `rgba(0,255,120,${this.opacity})`
+ctx.shadowColor = "#00ff88"
+ctx.shadowBlur = 20
+ctx.fill()
+}
+
+reset(){
+this.x = Math.random() * canvas.width
+this.y = canvas.height
+this.opacity = Math.random()
+}
+}
+
+for(let i=0;i<100;i++){
+particles.push(new Particle())
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+particles.forEach(p=>{
+p.update()
+p.draw()
+})
+requestAnimationFrame(animate)
+}
+
+animate()
+
+window.addEventListener("resize",()=>{
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+})
+
+</script>
 
 </body>
 </html>

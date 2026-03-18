@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DeviousWind & Army | Plataforma de Ventas Online</title>
+
+<link rel="shortcut icon" href="./images/favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0b0b0b;
+color:white;
+overflow-x:hidden;
+}
+
+/* BOTON RETORNO */
+
+.back-btn{
+position:fixed;
+top:20px;
+left:20px;
+z-index:999;
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px 18px;
+border-radius:30px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+color:white;
+text-decoration:none;
+font-size:.9rem;
+transition:.25s;
+}
+
+.back-btn:hover{
+background:rgba(255,255,255,.15);
+transform:scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:75vh;
+display:flex;
+align-items:center;
+padding:40px;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-3;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,#000 10%,rgba(0,0,0,.25));
+z-index:-2;
+}
+
+/* CONTENIDO HERO */
+
+.hero-content{
+max-width:650px;
+transform:translateY(0);
+transition:transform .2s;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:1.1rem;
+color:#ccc;
+margin-bottom:10px;
+}
+
+.dev{
+color:#00e676;
+margin-bottom:15px;
+}
+
+/* ESTADISTICAS */
+
+.stats{
+display:flex;
+gap:25px;
+margin:20px 0;
+flex-wrap:wrap;
+}
+
+.stat{
+font-size:.9rem;
+color:#ccc;
+}
+
+/* BOTON */
+
+.btn{
+display:inline-block;
+padding:12px 28px;
+border-radius:30px;
+font-weight:500;
+background:rgba(60, 255, 0, 0.68);
+border:1px solid rgba(60, 255, 0, 0.68);
+backdrop-filter:blur(10px);
+color:white;
+transition:.25s;
+text-decoration:none;
+}
+
+.btn:hover{
+background:rgba(0,255,120,.2);
+transform:scale(1.05);
+}
+
+/* SECCIONES */
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:90px 30px;
+}
+
+/* TEXTO MEJORADO */
+
+.section p{
+color:#aaa;
+line-height:1.8;
+margin-bottom:20px;
+text-align:justify;
+}
+
+/* ANIMACION */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+margin-bottom:25px;
+font-size:2rem;
+}
+
+/* CARRUSEL */
+
+.carousel{
+margin-top:40px;
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
+cursor:grab;
+}
+
+.carousel:active{
+cursor:grabbing;
+}
+
+.carousel::-webkit-scrollbar{
+display:none;
+}
+
+.slide{
+min-width:300px;
+scroll-snap-align:start;
+border-radius:14px;
+overflow:hidden;
+transition:.3s;
+cursor:pointer;
+}
+
+.slide img{
+width:100%;
+display:block;
+}
+
+.slide:hover{
+transform:scale(1.05);
+}
+
+/* VISOR */
+
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:2000;
+}
+
+.viewer.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.close-viewer{
+position:absolute;
+top:20px;
+right:30px;
+font-size:28px;
+color:white;
+cursor:pointer;
+background:rgba(0,0,0,0.5);
+padding:8px 14px;
+border-radius:50%;
+transition:.3s;
+}
+
+.close-viewer:hover{
+background:#00e676;
+color:black;
+transform:scale(1.1);
+}
+
+/* TECNOLOGIAS */
+
+.tech{
+margin-top:60px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.tech span{
+background:#111;
+padding:8px 16px;
+border-radius:20px;
+border:1px solid #222;
+font-size:.85rem;
+}
+
+/* FOOTER BOTON */
+
+.enter{
+margin-top:60px;
+}
+
+/* MODAL (para descarga, aunque en esta pagina no se usa, se incluye por consistencia) */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:1000;
+}
+
+.modal.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.modal-box{
+background:#111;
+padding:30px;
+border-radius:16px;
+text-align:center;
+max-width:320px;
+border:1px solid #222;
+animation:scaleIn .3s ease;
+}
+
+.modal-box h3{
+margin-bottom:10px;
+}
+
+.modal-box p{
+color:#aaa;
+font-size:.9rem;
+margin-bottom:20px;
+}
+
+.modal-box button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#00e676;
+color:black;
+cursor:pointer;
+}
+
+@keyframes scaleIn{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+@media(max-width:700px){
+.hero{
+height:auto;
+padding:80px 20px;
+}
+.hero h1{
+font-size:2rem;
+}
+.carousel{
+gap:15px;
+}
+.slide{
+min-width:240px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="recursos.html" class="back-btn">⬅ Volver</a>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<video autoplay muted loop>
+<source src="videos/DW.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
+
+<h1>DeviousWind & Army</h1>
+
+<div class="subtitle">
+Plataforma de Ventas Online
+</div>
+
+<div class="dev">
+ — Desarrollado por DeviousWind
+</div>
+
+<div class="stats">
+
+<div class="stat">🛒 Tienda digital</div>
+<div class="stat">🚚 Venta y distribución</div>
+<div class="stat">🎨 Diseño y sublimación</div>
+<div class="stat">💻 Empresa tecnológica - Developer Enginer</div>
+
+</div>
+
+<a href="index.html" class="btn">
+Entrar a la plataforma
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section reveal">
+
+<h2>Sobre DeviousWind & Army</h2>
+
+<p>
+
+DeviousWind & Army es una plataforma digital enfocada en la venta de productos, 
+servicios creativos y soluciones tecnológicas. La empresa combina diseño, 
+sublimación, desarrollo web y comercio digital para ofrecer experiencias 
+modernas a sus clientes.
+
+A través de esta plataforma es posible descubrir productos personalizados, 
+servicios de diseño gráfico, soluciones digitales y otros proyectos creados 
+por DeviousWind. Nuestro enfoque se basa en la innovación, la creatividad 
+y el compromiso con la calidad.
+
+DeviousWind busca construir una comunidad donde la tecnología, el diseño 
+y el emprendimiento se conecten para crear nuevas oportunidades.
+
+</p>
+
+</section>
+
+
+<section class="section reveal">
+
+<h2>Capturas de la plataforma</h2>
+
+<div class="carousel" id="carousel">
+
+<div class="slide">
+<img src="images/Logo DW-2026.jpg">
+</div>
+
+<div class="slide">
+<img src="images/DW1.jpg">
+</div>
+
+<div class="slide">
+<img src="images/DW2.jpg">
+</div>
+
+<div class="slide">
+<img src="images/DW3.jpg">
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section reveal">
+
+<h2>Tecnologías utilizadas</h2>
+
+<div class="tech">
+
+<span>Next.js</span>
+<span>React</span>
+<span>TailwindCSS</span>
+<span>Node.js</span>
+<span>Express</span>
+<span>MySQL</span>
+<span>Socket.io</span>
+<span>Android Studio</span>
+
+</div>
+
+<div class="enter">
+
+<a href="index.html" class="btn">
+Acceder al sistema
+</a>
+
+</div>
+
+</section>
+
+<!-- VISOR (para las imagenes) -->
+<div class="viewer" id="viewer">
+  <span class="close-viewer" onclick="closeViewer()">✖</span>
+  <img id="viewerImg">
+</div>
+
+<!-- MODAL (por compatibilidad de scripts) -->
+<div class="modal" id="modal">
+<div class="modal-box">
+<h3>Descarga no disponible</h3>
+<p>La app solo puede descargarse desde un dispositivo móvil 📱</p>
+<button onclick="closeModal()">Entendido</button>
+</div>
+</div>
+
+<script>
+
+/* ANIMACION SCROLL */
+const reveals = document.querySelectorAll(".reveal")
+
+window.addEventListener("scroll",()=>{
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 120){
+el.classList.add("active")
+}
+})
+})
+
+/* EFECTO PARALLAX EN HERO */
+window.addEventListener("scroll",()=>{
+const scrolled = window.scrollY
+const heroContent = document.querySelector(".hero-content")
+if(heroContent) {
+heroContent.style.transform = `translateY(${scrolled * 0.2}px)`
+}
+})
+
+/* VISOR DE IMAGENES */
+const viewer = document.getElementById("viewer")
+const viewerImg = document.getElementById("viewerImg")
+
+document.querySelectorAll(".slide img").forEach(img=>{
+img.addEventListener("click",()=>{
+viewer.classList.add("active")
+viewerImg.src = img.src
+})
+})
+
+/* CERRAR VISOR (funcion global para el onclick) */
+function closeViewer(){
+document.getElementById("viewer").classList.remove("active")
+}
+
+/* FUNCIONES DEL MODAL (por compatibilidad, aunque no se usan directamente aqui) */
+function closeModal(){
+document.getElementById("modal").classList.remove("active")
+}
+
+/* DRAG EN PC PARA EL CARRUSEL */
+const carousel = document.getElementById("carousel")
+if(carousel) {
+let isDown = false
+let startX
+let scrollLeft
+
+carousel.addEventListener("mousedown", e=>{
+isDown = true
+startX = e.pageX - carousel.offsetLeft
+scrollLeft = carousel.scrollLeft
+})
+
+carousel.addEventListener("mouseleave", ()=> isDown=false)
+carousel.addEventListener("mouseup", ()=> isDown=false)
+
+carousel.addEventListener("mousemove", e=>{
+if(!isDown) return
+e.preventDefault()
+const x = e.pageX - carousel.offsetLeft
+const walk = (x - startX) * 2
+carousel.scrollLeft = scrollLeft - walk
+})
+}
+</script>
+
+</body>
+</html>

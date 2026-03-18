@@ -1,9 +1,0 @@
-Los juegos no estan modificados de ninguna manera. Ya que es muy inoptimizable y no encontre nada para poder hacerlo.
-(maldito Clickteam)
-
-Aunque funcionan bastante bien en PCS de bajos recursos, te voy a dar algunas recomendaciones para optimizarlos:
-
-1- Establecer la resolucion de la Pantalla en 1280x720 para obtener el mejor rendimiento sin bugear el juego
-2- Establecer la prioridad del ejecutable en alta desde el administrador de tareas para reducir el Stuttering
-3- Utilizar el archivo .bat de "Optimizador.bat" para optimizar todo tu Windows antes de abrir el Juego
-4- Tener el driver de video en la ultima version para no tener fallos al iniciar el FNAF
